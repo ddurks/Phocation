@@ -7,19 +7,67 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    @IBOutlet weak var ChooseFromLibraryButton: UIButton!
+class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    @IBOutlet weak var TakeNewPhotoButton: UIButton!
+    @IBOutlet weak var imageViewer: UIImageView!
     
-    @IBOutlet weak var imagePicked: UIImageView!
+    @IBOutlet weak var backButton: UIButton!
+    
+    @IBOutlet weak var takeButton: UIButton!
+    
+    @IBOutlet weak var chooseButton: UIButton!
+    
+    @IBOutlet weak var postButton: UIButton!
+    
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        imagePicker.delegate = self
+        postButton.isEnabled = false
+    }
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.mediaTypes = [kUTTypeImage as String]
+        imagePicker.allowsEditing = false
+        
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func choosePhoto(_ sender: Any) {
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.mediaTypes = [kUTTypeImage as String]
+        imagePicker.allowsEditing = false
+        
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        postButton.isEnabled = true
+        
+        let mediaType = info[UIImagePickerControllerMediaType] as! NSString
+        
+        var image = UIImage()
+        
+        if mediaType.isEqual(to: kUTTypeImage as String) {
+            image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        } else if mediaType.isEqual(to: kUTTypeMovie as String) {
+            image = info[UIImagePickerControllerMediaURL] as! UIImage
+        }
+  
+        imageViewer.contentMode = .scaleAspectFit
+        imageViewer.image = image
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,31 +75,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func TakeNewPhotoButton(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera;
-            imagePicker.allowsEditing = false
-            self.presentViewController(imagePicker, animated: true, completion: nil)
-        }
-    }
 
-    @IBAction func openPhotoLibraryButton(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
-            imagePicker.allowsEditing = true
-            self.presentViewController(imagePicker, animated: true, completion: nil)
-        }
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        imagePicked.image = image
-        self.dismissViewControllerAnimated(true, completion: nil);
-    }
-    
     /*
     // MARK: - Navigation
 
