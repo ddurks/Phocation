@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E54F41D71E52520B00FDBD0E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */; };
+		E59B15801E516440004B441E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B157F1E516440004B441E /* CameraViewController.swift */; };
 		E5EEFC2C1E5149970024B36A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EEFC2B1E5149970024B36A /* AppDelegate.swift */; };
-		E5EEFC2E1E5149970024B36A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EEFC2D1E5149970024B36A /* ViewController.swift */; };
+		E5EEFC2E1E5149970024B36A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EEFC2D1E5149970024B36A /* MainViewController.swift */; };
 		E5EEFC311E5149970024B36A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5EEFC2F1E5149970024B36A /* Main.storyboard */; };
 		E5EEFC331E5149970024B36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5EEFC321E5149970024B36A /* Assets.xcassets */; };
 		E5EEFC361E5149970024B36A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5EEFC341E5149970024B36A /* LaunchScreen.storyboard */; };
@@ -34,9 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E59B157F1E516440004B441E /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		E5EEFC281E5149970024B36A /* Phocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5EEFC2B1E5149970024B36A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E5EEFC2D1E5149970024B36A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E5EEFC2D1E5149970024B36A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E5EEFC301E5149970024B36A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E5EEFC321E5149970024B36A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5EEFC351E5149970024B36A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,8 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				E5EEFC2B1E5149970024B36A /* AppDelegate.swift */,
-				E5EEFC2D1E5149970024B36A /* ViewController.swift */,
+				E5EEFC2D1E5149970024B36A /* MainViewController.swift */,
+				E59B157F1E516440004B441E /* CameraViewController.swift */,
 				E5EEFC2F1E5149970024B36A /* Main.storyboard */,
+				E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */,
 				E5EEFC321E5149970024B36A /* Assets.xcassets */,
 				E5EEFC341E5149970024B36A /* LaunchScreen.storyboard */,
 				E5EEFC371E5149970024B36A /* Info.plist */,
@@ -193,6 +199,7 @@
 				TargetAttributes = {
 					E5EEFC271E5149970024B36A = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = UH5ELECMT2;
 					};
 					E5EEFC3B1E5149980024B36A = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -256,8 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5EEFC2E1E5149970024B36A /* ViewController.swift in Sources */,
+				E5EEFC2E1E5149970024B36A /* MainViewController.swift in Sources */,
 				E5EEFC2C1E5149970024B36A /* AppDelegate.swift in Sources */,
+				E59B15801E516440004B441E /* CameraViewController.swift in Sources */,
+				E54F41D71E52520B00FDBD0E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,10 +410,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Phocation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Durks.Phocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -412,10 +424,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Phocation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Durks.Phocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -484,6 +499,7 @@
 				E5EEFC521E5149980024B36A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E5EEFC531E5149980024B36A /* Build configuration list for PBXNativeTarget "PhocationTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +508,7 @@
 				E5EEFC551E5149980024B36A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E5EEFC561E5149980024B36A /* Build configuration list for PBXNativeTarget "PhocationUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +517,7 @@
 				E5EEFC581E5149980024B36A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
