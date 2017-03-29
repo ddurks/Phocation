@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 import MobileCoreServices
 
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -23,11 +24,19 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     let imagePicker = UIImagePickerController()
     
+    var image = UIImage()
+    
+    var username:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imagePicker.delegate = self
         postButton.isEnabled = false
+    }
+    
+    @IBAction func postPhoto(_ sender: Any) {
+        PhotoTakingHelper(image: self.image)
     }
     
     @IBAction func takePhoto(_ sender: Any) {
@@ -52,16 +61,14 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
         
-        var image = UIImage()
-        
         if mediaType.isEqual(to: kUTTypeImage as String) {
-            image = info[UIImagePickerControllerOriginalImage] as! UIImage
+            self.image = info[UIImagePickerControllerOriginalImage] as! UIImage
         } else if mediaType.isEqual(to: kUTTypeMovie as String) {
-            image = info[UIImagePickerControllerMediaURL] as! UIImage
+            self.image = info[UIImagePickerControllerMediaURL] as! UIImage
         }
   
         imageViewer.contentMode = .scaleAspectFit
-        imageViewer.image = image
+        imageViewer.image = self.image
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -70,6 +77,14 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.dismiss(animated: true, completion: nil)
     }
 
+    func PhotoTakingHelper(image: UIImage?) {
+        if let image = image {
+            let post = Post()
+            post.image = image
+            post.upload()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

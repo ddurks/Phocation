@@ -8,7 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		E54F41D71E52520B00FDBD0E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */; };
+		E57C3B371E8C44B4007DA47D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57C3B361E8C44B4007DA47D /* Post.swift */; };
+		E57C3B391E8C4998007DA47D /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57C3B381E8C4998007DA47D /* UserInfo.swift */; };
 		E59B15801E516440004B441E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B157F1E516440004B441E /* CameraViewController.swift */; };
+		E5EB51601E8B5119008D11E2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB515F1E8B5119008D11E2 /* AudioToolbox.framework */; };
+		E5EB51621E8B5122008D11E2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB51611E8B5122008D11E2 /* CFNetwork.framework */; };
+		E5EB51641E8B512C008D11E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB51631E8B512C008D11E2 /* CoreGraphics.framework */; };
+		E5EB51661E8B5135008D11E2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB51651E8B5135008D11E2 /* CoreLocation.framework */; };
+		E5EB51681E8B513F008D11E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB51671E8B513F008D11E2 /* QuartzCore.framework */; };
+		E5EB516A1E8B5148008D11E2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB51691E8B5148008D11E2 /* Security.framework */; };
+		E5EB516C1E8B5152008D11E2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB516B1E8B5152008D11E2 /* StoreKit.framework */; };
+		E5EB516E1E8B5160008D11E2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB516D1E8B5160008D11E2 /* SystemConfiguration.framework */; };
+		E5EB51701E8B5169008D11E2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB516F1E8B5169008D11E2 /* libz.tbd */; };
+		E5EB51721E8B5176008D11E2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB51711E8B5176008D11E2 /* libsqlite3.tbd */; };
+		E5EB51811E8B5784008D11E2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB517F1E8B5784008D11E2 /* Bolts.framework */; };
+		E5EB51821E8B5784008D11E2 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB51801E8B5784008D11E2 /* Parse.framework */; };
 		E5EEFC2C1E5149970024B36A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EEFC2B1E5149970024B36A /* AppDelegate.swift */; };
 		E5EEFC2E1E5149970024B36A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EEFC2D1E5149970024B36A /* MainViewController.swift */; };
 		E5EEFC311E5149970024B36A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5EEFC2F1E5149970024B36A /* Main.storyboard */; };
@@ -36,11 +50,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		E59B157F1E516440004B441E /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Phocation/SettingsViewController.swift; sourceTree = "<group>"; };
+		E57C3B361E8C44B4007DA47D /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		E57C3B381E8C4998007DA47D /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		E59B157F1E516440004B441E /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Phocation/CameraViewController.swift; sourceTree = "<group>"; };
+		E5EB515F1E8B5119008D11E2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E5EB51611E8B5122008D11E2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E5EB51631E8B512C008D11E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E5EB51651E8B5135008D11E2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E5EB51671E8B513F008D11E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E5EB51691E8B5148008D11E2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E5EB516B1E8B5152008D11E2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E5EB516D1E8B5160008D11E2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E5EB516F1E8B5169008D11E2 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		E5EB51711E8B5176008D11E2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		E5EB517F1E8B5784008D11E2 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Parse-iOS/Bolts.framework"; sourceTree = "<group>"; };
+		E5EB51801E8B5784008D11E2 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "Parse-iOS/Parse.framework"; sourceTree = "<group>"; };
 		E5EEFC281E5149970024B36A /* Phocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5EEFC2B1E5149970024B36A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E5EEFC2D1E5149970024B36A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E5EEFC2D1E5149970024B36A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Phocation/MainViewController.swift; sourceTree = "<group>"; };
 		E5EEFC301E5149970024B36A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E5EEFC321E5149970024B36A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5EEFC351E5149970024B36A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +86,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5EB51721E8B5176008D11E2 /* libsqlite3.tbd in Frameworks */,
+				E5EB51701E8B5169008D11E2 /* libz.tbd in Frameworks */,
+				E5EB516E1E8B5160008D11E2 /* SystemConfiguration.framework in Frameworks */,
+				E5EB516C1E8B5152008D11E2 /* StoreKit.framework in Frameworks */,
+				E5EB516A1E8B5148008D11E2 /* Security.framework in Frameworks */,
+				E5EB51681E8B513F008D11E2 /* QuartzCore.framework in Frameworks */,
+				E5EB51661E8B5135008D11E2 /* CoreLocation.framework in Frameworks */,
+				E5EB51641E8B512C008D11E2 /* CoreGraphics.framework in Frameworks */,
+				E5EB51811E8B5784008D11E2 /* Bolts.framework in Frameworks */,
+				E5EB51621E8B5122008D11E2 /* CFNetwork.framework in Frameworks */,
+				E5EB51821E8B5784008D11E2 /* Parse.framework in Frameworks */,
+				E5EB51601E8B5119008D11E2 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,13 +118,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E57C3B341E8C4459007DA47D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E5EEFC2D1E5149970024B36A /* MainViewController.swift */,
+				E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */,
+				E59B157F1E516440004B441E /* CameraViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E57C3B351E8C449D007DA47D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E57C3B361E8C44B4007DA47D /* Post.swift */,
+				E57C3B381E8C4998007DA47D /* UserInfo.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E5EB51551E8B508B008D11E2 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				E5EB517F1E8B5784008D11E2 /* Bolts.framework */,
+				E5EB51801E8B5784008D11E2 /* Parse.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		E5EB515E1E8B5119008D11E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5EB51711E8B5176008D11E2 /* libsqlite3.tbd */,
+				E5EB516F1E8B5169008D11E2 /* libz.tbd */,
+				E5EB516D1E8B5160008D11E2 /* SystemConfiguration.framework */,
+				E5EB516B1E8B5152008D11E2 /* StoreKit.framework */,
+				E5EB51691E8B5148008D11E2 /* Security.framework */,
+				E5EB51671E8B513F008D11E2 /* QuartzCore.framework */,
+				E5EB51651E8B5135008D11E2 /* CoreLocation.framework */,
+				E5EB51631E8B512C008D11E2 /* CoreGraphics.framework */,
+				E5EB51611E8B5122008D11E2 /* CFNetwork.framework */,
+				E5EB515F1E8B5119008D11E2 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E5EEFC1F1E5149970024B36A = {
 			isa = PBXGroup;
 			children = (
+				E57C3B351E8C449D007DA47D /* Models */,
+				E5EB51551E8B508B008D11E2 /* Framework */,
+				E57C3B341E8C4459007DA47D /* ViewControllers */,
 				E5EEFC2A1E5149970024B36A /* Phocation */,
 				E5EEFC3F1E5149980024B36A /* PhocationTests */,
 				E5EEFC4A1E5149980024B36A /* PhocationUITests */,
 				E5EEFC291E5149970024B36A /* Products */,
+				E5EB515E1E8B5119008D11E2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,10 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				E5EEFC2B1E5149970024B36A /* AppDelegate.swift */,
-				E5EEFC2D1E5149970024B36A /* MainViewController.swift */,
-				E59B157F1E516440004B441E /* CameraViewController.swift */,
 				E5EEFC2F1E5149970024B36A /* Main.storyboard */,
-				E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */,
 				E5EEFC321E5149970024B36A /* Assets.xcassets */,
 				E5EEFC341E5149970024B36A /* LaunchScreen.storyboard */,
 				E5EEFC371E5149970024B36A /* Info.plist */,
@@ -270,6 +356,8 @@
 				E5EEFC2C1E5149970024B36A /* AppDelegate.swift in Sources */,
 				E59B15801E516440004B441E /* CameraViewController.swift in Sources */,
 				E54F41D71E52520B00FDBD0E /* SettingsViewController.swift in Sources */,
+				E57C3B391E8C4998007DA47D /* UserInfo.swift in Sources */,
+				E57C3B371E8C44B4007DA47D /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +503,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Parse-iOS\\ (1)",
+					"$(PROJECT_DIR)/Parse-iOS\\ (1)",
+					"$(PROJECT_DIR)/Parse-iOS",
+					"$(PROJECT_DIR)/Parse-iOS\\ (1)",
+					"$(PROJECT_DIR)/Parse-iOS\\ (1)",
+				);
 				INFOPLIST_FILE = Phocation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Durks.Phocation;
@@ -430,6 +526,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Parse-iOS\\ (1)",
+					"$(PROJECT_DIR)/Parse-iOS\\ (1)",
+					"$(PROJECT_DIR)/Parse-iOS",
+					"$(PROJECT_DIR)/Parse-iOS\\ (1)",
+					"$(PROJECT_DIR)/Parse-iOS\\ (1)",
+				);
 				INFOPLIST_FILE = Phocation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Durks.Phocation;

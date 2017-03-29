@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Parse
 import CoreLocation
 
 class MainViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UINavigationControllerDelegate {
@@ -25,6 +26,10 @@ class MainViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let testObject = PFObject(className: "TestObject")
+        testObject["foo"] = "bar"
+        testObject.saveInBackground()
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -32,7 +37,7 @@ class MainViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         mapView.showsUserLocation = true
         
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last

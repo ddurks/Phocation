@@ -7,15 +7,34 @@
 //
 
 import UIKit
+import Parse
+import Bolts
+
+let currentUser = UserInfo.sharedUserInfo
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Initialize Parse.
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "cQYSuT7IiZi6M028LB6JvS18cZY530G43ZWwPytb"
+            $0.clientKey = "vueavoBmA7q4Ru0Qz387aLD9gMGwRH2o5j2fqKbf"
+            $0.server = "https://parseapi.back4app.com"
+        }
+        Parse.initialize(with: configuration)
+        Post.registerSubclass()
+        
+        PFUser.logInWithUsername(inBackground: currentUser.userName!, password: currentUser.password!)
+        
+        if let currentUser = PFUser.current(){
+            print("\(currentUser.username!) logged in successfully")
+        } else {
+            print("No logged in user :(")
+        }
         return true
     }
 

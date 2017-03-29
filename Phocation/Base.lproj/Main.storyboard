@@ -43,14 +43,12 @@
                                     <color key="titleShadowColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8k9-UC-eei">
-                                <rect key="frame" x="276" y="529" width="48" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGY-Xn-JKx">
+                                <rect key="frame" x="285" y="543" width="30" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" red="0.003598733377" green="0.1393455337" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="+"/>
                                 <connections>
-                                    <segue destination="3Sc-I0-IW1" kind="show" id="gTi-Jy-m8l"/>
+                                    <segue destination="3Sc-I0-IW1" kind="show" id="Q7b-Ha-63R"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -62,15 +60,14 @@
                             <constraint firstItem="XAi-WZ-ZjY" firstAttribute="top" secondItem="jG3-iB-y6a" secondAttribute="bottom" constant="-57" id="BFz-PW-ix7"/>
                             <constraint firstItem="jG3-iB-y6a" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="Iwb-0l-CKq"/>
                             <constraint firstItem="jG3-iB-y6a" firstAttribute="leading" secondItem="XAi-WZ-ZjY" secondAttribute="trailing" constant="-94" id="RgV-g4-WlP"/>
-                            <constraint firstItem="8k9-UC-eei" firstAttribute="centerX" secondItem="jG3-iB-y6a" secondAttribute="centerX" id="TMY-1i-c5F"/>
                             <constraint firstItem="iLR-0B-j4U" firstAttribute="top" secondItem="jG3-iB-y6a" secondAttribute="bottom" constant="-57" id="Z13-hR-ONC"/>
-                            <constraint firstItem="8k9-UC-eei" firstAttribute="top" secondItem="jG3-iB-y6a" secondAttribute="bottom" constant="-71" id="ev1-8K-lhu"/>
+                            <constraint firstItem="EGY-Xn-JKx" firstAttribute="top" secondItem="jG3-iB-y6a" secondAttribute="bottom" constant="-57" id="bfc-i5-LaX"/>
+                            <constraint firstItem="EGY-Xn-JKx" firstAttribute="centerX" secondItem="jG3-iB-y6a" secondAttribute="centerX" id="dj0-td-dgB"/>
                             <constraint firstItem="jG3-iB-y6a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jCy-Po-eIO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="jG3-iB-y6a" id="gR2-zr-zrU"/>
-                        <outlet property="newPhotoButton" destination="8k9-UC-eei" id="Gpi-8z-0ye"/>
                         <outlet property="phocationsButton" destination="iLR-0B-j4U" id="7uT-nM-sBG"/>
                         <outlet property="settingsButton" destination="XAi-WZ-ZjY" id="NuF-CA-zGs"/>
                     </connections>
@@ -212,7 +209,7 @@
         <!--Camera View Controller-->
         <scene sceneID="3C1-8b-gO4">
             <objects>
-                <viewController id="3Sc-I0-IW1" customClass="CameraViewController" customModule="Phocation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Camera" id="3Sc-I0-IW1" customClass="CameraViewController" customModule="Phocation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s3y-jy-vfT"/>
                         <viewControllerLayoutGuide type="bottom" id="UYh-Bi-ICQ"/>
@@ -248,6 +245,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAl-ME-tea">
                                 <rect key="frame" x="717" y="28" width="31" height="30"/>
                                 <state key="normal" title="Post"/>
+                                <connections>
+                                    <action selector="postPhoto:" destination="3Sc-I0-IW1" eventType="touchUpInside" id="hIN-mT-nzD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
