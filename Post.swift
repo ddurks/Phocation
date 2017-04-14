@@ -15,18 +15,24 @@ class Post : PFObject, PFSubclassing {
     // 2
     @NSManaged var imageFile: PFFile?
     @NSManaged var user: PFUser?
+    @NSManaged var userLat: String?
+    @NSManaged var userLong: String?
     
     var image: UIImage?
+    var latitude: String?
+    var longitude: String?
     
     func upload(){
-        if let image = image {
+        if self.image != nil && self.latitude != nil && self.longitude != nil  {
             // 1
-            let imageData = UIImageJPEGRepresentation(image, 0.8)!
+            let imageData = UIImageJPEGRepresentation(self.image!, 0.8)!
             let imageFile = PFFile(data: imageData)
             imageFile?.saveInBackground()
             // 2
             self.imageFile = imageFile
-            user = PFUser.current()
+            self.user = PFUser.current()
+            self.userLat = self.latitude
+            self.userLong = self.longitude
             saveInBackground()
         }
     }

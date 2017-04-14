@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var settingsBackButton: UIButton!
     
@@ -34,15 +36,45 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.userName.delegate = self
         // Do any additional setup after loading the view.
+        userName.text = currentUser.userName
     }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @IBAction func onUserNameUpdate(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        defaults.set(userName.text, forKey: "User")
+        defaults.synchronize()
+        
+        // Defining the user object
+        let user = PFUser()
+        user.username = userName.text
+        user.password = "Test"
+        
+        // Signing up using the Parse API
+        user.signUpInBackground {
+            (success, error) -> Void in
+            if let error = error as NSError? {
+                let errorString = error.userInfo["error"] as? NSString
+                // In case something went wrong, use errorString to get the error
+                let ualert = UIAlertController(title: "Invalid Username", message: "Please Enter a Different One", preferredStyle: UIAlertControllerStyle.alert)
+            } else {
+                // Everything went okay
+            }
+        }
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     /*
     // MARK: - Navigation

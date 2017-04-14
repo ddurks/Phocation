@@ -23,31 +23,46 @@ class MainViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     let locationManager = CLLocationManager()
     
+    var posts: [Post] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackground()
         
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
+        /*
+        let phocations = Post.query()
         
+        for object in phocations {
+            var pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(Int(object.userLat), Int(object.userLong))
+            var objectAnnotation = MKPointAnnotation()
+            objectAnnotation.coordinate = pinLocation
+            objectAnnotation.title = "Post"
+            self.mapView.addAnnotation(objectAnnotation)
+            
+        }
+ */
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last
+
+        currentUser.latitude = String(format: "%f", (location?.coordinate.latitude)!)
+        currentUser.longitude = String(format: "%f", (location?.coordinate.longitude)!)
+        
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
         
         self.mapView.setRegion(region, animated: true)
         
-        self.locationManager.stopUpdatingLocation()    }
+        self.locationManager.stopUpdatingLocation()
+    }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error!: " + error.localizedDescription)

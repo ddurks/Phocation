@@ -18,6 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Set persistent variables
+        
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "User") == nil {
+            let defaultUser = ["User" : "Anon"]
+            defaults.register(defaults: defaultUser)
+        }
+
+        if defaults.string(forKey: "Pass") == nil {
+            let defaultPass = ["Pass" : "Test"]
+            defaults.register(defaults: defaultPass)
+        }
+        
+        currentUser.userName = defaults.string(forKey: "User")
+        currentUser.password = defaults.string(forKey: "Pass")
         
         // Initialize Parse.
         let configuration = ParseClientConfiguration {
@@ -30,11 +45,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFUser.logInWithUsername(inBackground: currentUser.userName!, password: currentUser.password!)
         
-        if let currentUser = PFUser.current(){
-            print("\(currentUser.username!) logged in successfully")
+        if let currUser = PFUser.current(){
+            print("\(currUser.username!) logged in successfully")
         } else {
             print("No logged in user :(")
         }
+        
         return true
     }
 

@@ -14,11 +14,11 @@ class UserInfo {
     
     var userName:String?
     var password:String?
-    var location:String?
+    var latitude:String?
+    var longitude:String?
     
     init(){
-        userName = "Anon"
-        password = "test"
+
     }
     
 }

@@ -81,6 +81,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         if let image = image {
             let post = Post()
             post.image = image
+            post.latitude = currentUser.latitude
+            post.longitude = currentUser.longitude
             post.upload()
         }
     }
