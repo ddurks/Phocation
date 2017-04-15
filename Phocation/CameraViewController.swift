@@ -36,7 +36,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     @IBAction func postPhoto(_ sender: Any) {
+        postButton.isEnabled = false
         PhotoTakingHelper(image: self.image)
+        postButton.isEnabled = true
     }
     
     @IBAction func takePhoto(_ sender: Any) {
@@ -83,6 +85,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             post.image = image
             post.latitude = currentUser.latitude
             post.longitude = currentUser.longitude
+            post.location = PFGeoPoint(latitude: Double(currentUser.latitude!)!, longitude: Double(currentUser.longitude!)!)
             post.upload()
         }
     }

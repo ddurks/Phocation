@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Set persistent variables
         
+        // Set persistent variables
         let defaults = UserDefaults.standard
         if defaults.string(forKey: "User") == nil {
             let defaultUser = ["User" : "Anon"]

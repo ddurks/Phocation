@@ -17,13 +17,15 @@ class Post : PFObject, PFSubclassing {
     @NSManaged var user: PFUser?
     @NSManaged var userLat: String?
     @NSManaged var userLong: String?
+    @NSManaged var userLocation: PFGeoPoint?
     
     var image: UIImage?
     var latitude: String?
     var longitude: String?
+    var location: PFGeoPoint?
     
     func upload(){
-        if self.image != nil && self.latitude != nil && self.longitude != nil  {
+        if self.image != nil  {
             // 1
             let imageData = UIImageJPEGRepresentation(self.image!, 0.8)!
             let imageFile = PFFile(data: imageData)
@@ -33,7 +35,8 @@ class Post : PFObject, PFSubclassing {
             self.user = PFUser.current()
             self.userLat = self.latitude
             self.userLong = self.longitude
-            saveInBackground()
+            self.userLocation = self.location
+            self.saveInBackground()
         }
     }
     //MARK: PFSubclassing Protocol

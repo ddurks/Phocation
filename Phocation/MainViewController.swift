@@ -23,7 +23,7 @@ class MainViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     let locationManager = CLLocationManager()
     
-    var posts: [Post] = []
+    var posts = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,18 +34,35 @@ class MainViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
-        /*
-        let phocations = Post.query()
-        
-        for object in phocations {
-            var pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(Int(object.userLat), Int(object.userLong))
-            var objectAnnotation = MKPointAnnotation()
-            objectAnnotation.coordinate = pinLocation
-            objectAnnotation.title = "Post"
-            self.mapView.addAnnotation(objectAnnotation)
+
+        let phocations = PFQuery(className: "Post")
+        phocations.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
             
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) posts.")
+                // Do something with the found objects
+                if let objects = objects {
+                    for object in objects {
+                        //self.posts.add(object["userLocation"])
+                        let lat = object["userLat"] as! String
+                        let long = object["userLong"] as! String
+                        let longD = Double(long), latD = Double(lat)
+                        print("\(lat) \(long)")
+                        let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latD!, longD!)
+                        let objectAnnotation = MKPointAnnotation()
+                        objectAnnotation.coordinate = pinLocation
+                        objectAnnotation.title = "Post"
+                        self.mapView.addAnnotation(objectAnnotation)
+                    }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) ")
+            }
         }
- */
+
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
