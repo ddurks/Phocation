@@ -60,9 +60,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         user.signUpInBackground {
             (success, error) -> Void in
             if let error = error as NSError? {
-                let errorString = error.userInfo["error"] as? NSString
+                _ = error.userInfo["error"] as? NSString
                 // In case something went wrong, use errorString to get the error
-                let ualert = UIAlertController(title: "Invalid Username", message: "Please Enter a Different One", preferredStyle: UIAlertControllerStyle.alert)
+                _ = UIAlertController(title: "Invalid Username", message: "Please Enter a Different One", preferredStyle: UIAlertControllerStyle.alert)
             } else {
                 // Everything went okay
             }

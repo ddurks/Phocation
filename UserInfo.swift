@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class UserInfo {
     
@@ -16,6 +17,7 @@ class UserInfo {
     var password:String?
     var latitude:String?
     var longitude:String?
+    var currID:String?
     
     init(){
 

@@ -10,6 +10,11 @@
 		E54F41D71E52520B00FDBD0E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */; };
 		E57C3B371E8C44B4007DA47D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57C3B361E8C44B4007DA47D /* Post.swift */; };
 		E57C3B391E8C4998007DA47D /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57C3B381E8C4998007DA47D /* UserInfo.swift */; };
+		E5909B571EA28CD50001734C /* Phocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5909B561EA28CD50001734C /* Phocation.swift */; };
+		E5909B591EA2912D0001734C /* PhocationViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5909B581EA2912D0001734C /* PhocationViewer.swift */; };
+		E5909B5B1EA298950001734C /* PhocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5909B5A1EA298950001734C /* PhocationViewController.swift */; };
+		E5909B611EA321BA0001734C /* PhocationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5909B601EA321BA0001734C /* PhocationAnnotationView.swift */; };
+		E5909B6B1EA336970001734C /* redCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = E5909B6A1EA336970001734C /* redCircle.png */; };
 		E59B15801E516440004B441E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B157F1E516440004B441E /* CameraViewController.swift */; };
 		E5EB51601E8B5119008D11E2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB515F1E8B5119008D11E2 /* AudioToolbox.framework */; };
 		E5EB51621E8B5122008D11E2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB51611E8B5122008D11E2 /* CFNetwork.framework */; };
@@ -52,6 +57,11 @@
 		E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Phocation/SettingsViewController.swift; sourceTree = "<group>"; };
 		E57C3B361E8C44B4007DA47D /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E57C3B381E8C4998007DA47D /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		E5909B561EA28CD50001734C /* Phocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phocation.swift; sourceTree = "<group>"; };
+		E5909B581EA2912D0001734C /* PhocationViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhocationViewer.swift; sourceTree = "<group>"; };
+		E5909B5A1EA298950001734C /* PhocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhocationViewController.swift; sourceTree = "<group>"; };
+		E5909B601EA321BA0001734C /* PhocationAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhocationAnnotationView.swift; sourceTree = "<group>"; };
+		E5909B6A1EA336970001734C /* redCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redCircle.png; sourceTree = "<group>"; };
 		E59B157F1E516440004B441E /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Phocation/CameraViewController.swift; sourceTree = "<group>"; };
 		E5EB515F1E8B5119008D11E2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E5EB51611E8B5122008D11E2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -122,6 +132,7 @@
 				E5EEFC2D1E5149970024B36A /* MainViewController.swift */,
 				E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */,
 				E59B157F1E516440004B441E /* CameraViewController.swift */,
+				E5909B5A1EA298950001734C /* PhocationViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -131,8 +142,19 @@
 			children = (
 				E57C3B361E8C44B4007DA47D /* Post.swift */,
 				E57C3B381E8C4998007DA47D /* UserInfo.swift */,
+				E5909B561EA28CD50001734C /* Phocation.swift */,
+				E5909B581EA2912D0001734C /* PhocationViewer.swift */,
+				E5909B601EA321BA0001734C /* PhocationAnnotationView.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		E5909B6C1EA3369D0001734C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E5909B6A1EA336970001734C /* redCircle.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		E5EB51551E8B508B008D11E2 /* Framework */ = {
@@ -164,6 +186,7 @@
 		E5EEFC1F1E5149970024B36A = {
 			isa = PBXGroup;
 			children = (
+				E5909B6C1EA3369D0001734C /* Images */,
 				E57C3B351E8C449D007DA47D /* Models */,
 				E5EB51551E8B508B008D11E2 /* Framework */,
 				E57C3B341E8C4459007DA47D /* ViewControllers */,
@@ -278,7 +301,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "David Durkin";
 				TargetAttributes = {
 					E5EEFC271E5149970024B36A = {
@@ -325,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5EEFC361E5149970024B36A /* LaunchScreen.storyboard in Resources */,
+				E5909B6B1EA336970001734C /* redCircle.png in Resources */,
 				E5EEFC331E5149970024B36A /* Assets.xcassets in Resources */,
 				E5EEFC311E5149970024B36A /* Main.storyboard in Resources */,
 			);
@@ -352,10 +376,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5EEFC2E1E5149970024B36A /* MainViewController.swift in Sources */,
+				E5909B571EA28CD50001734C /* Phocation.swift in Sources */,
 				E5EEFC2C1E5149970024B36A /* AppDelegate.swift in Sources */,
 				E59B15801E516440004B441E /* CameraViewController.swift in Sources */,
+				E5909B5B1EA298950001734C /* PhocationViewController.swift in Sources */,
 				E54F41D71E52520B00FDBD0E /* SettingsViewController.swift in Sources */,
 				E57C3B391E8C4998007DA47D /* UserInfo.swift in Sources */,
+				E5909B591EA2912D0001734C /* PhocationViewer.swift in Sources */,
+				E5909B611EA321BA0001734C /* PhocationAnnotationView.swift in Sources */,
 				E57C3B371E8C44B4007DA47D /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,8 +453,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -471,8 +501,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -491,6 +523,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

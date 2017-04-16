@@ -6,10 +6,92 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Phocation View Controller-->
+        <scene sceneID="eUV-aS-EzQ">
+            <objects>
+                <viewController id="K1F-yT-UJS" customClass="PhocationViewController" customModule="Phocation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dQJ-9k-mYc"/>
+                        <viewControllerLayoutGuide type="bottom" id="HrX-Oz-9as"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kfU-TD-4b0">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5zZ-Cw-MAg">
+                                <rect key="frame" x="0.0" y="128" width="768" height="773"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjN-uh-A0f">
+                                <rect key="frame" x="39" y="48" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="dgH-g0-Zfb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJH-6q-Xfp">
+                                <rect key="frame" x="514" y="911" width="234" height="93"/>
+                                <state key="normal" title="Like"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJ9-x9-pIo">
+                                <rect key="frame" x="624" y="36" width="124" height="63"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwS-IK-UP0">
+                                <rect key="frame" x="369" y="36" width="31" height="63"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeX-zx-4n2">
+                                <rect key="frame" x="20" y="909" width="257" height="95"/>
+                                <state key="normal" title="Unlike"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HrX-Oz-9as" firstAttribute="top" secondItem="dJH-6q-Xfp" secondAttribute="bottom" constant="20" id="3un-E8-GB7"/>
+                            <constraint firstItem="dJH-6q-Xfp" firstAttribute="top" secondItem="5zZ-Cw-MAg" secondAttribute="bottom" constant="10" id="Bda-Mv-Sdi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OJ9-x9-pIo" secondAttribute="trailing" id="Cai-Sp-EKm"/>
+                            <constraint firstItem="dJH-6q-Xfp" firstAttribute="height" secondItem="oeX-zx-4n2" secondAttribute="height" id="DSh-1Y-JVR"/>
+                            <constraint firstItem="5zZ-Cw-MAg" firstAttribute="top" secondItem="dQJ-9k-mYc" secondAttribute="bottom" constant="108" id="FT7-Sb-VQV"/>
+                            <constraint firstItem="5zZ-Cw-MAg" firstAttribute="top" secondItem="EwS-IK-UP0" secondAttribute="bottom" constant="29" id="Gxg-dG-9f1"/>
+                            <constraint firstItem="EwS-IK-UP0" firstAttribute="top" secondItem="dQJ-9k-mYc" secondAttribute="bottom" constant="16" id="Kxj-5w-b5W"/>
+                            <constraint firstItem="HrX-Oz-9as" firstAttribute="top" secondItem="oeX-zx-4n2" secondAttribute="bottom" constant="20" id="RAz-fh-0qp"/>
+                            <constraint firstItem="WjN-uh-A0f" firstAttribute="top" secondItem="dQJ-9k-mYc" secondAttribute="bottom" constant="28" id="TOL-qY-JiG"/>
+                            <constraint firstItem="oeX-zx-4n2" firstAttribute="top" secondItem="5zZ-Cw-MAg" secondAttribute="bottom" constant="8" id="TsZ-gz-Eee"/>
+                            <constraint firstItem="HrX-Oz-9as" firstAttribute="top" secondItem="oeX-zx-4n2" secondAttribute="bottom" id="VYT-xz-18M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dJH-6q-Xfp" secondAttribute="trailing" id="Veo-Yv-R2A"/>
+                            <constraint firstItem="EwS-IK-UP0" firstAttribute="centerX" secondItem="kfU-TD-4b0" secondAttribute="centerX" id="Wie-Qq-81u"/>
+                            <constraint firstItem="HrX-Oz-9as" firstAttribute="top" secondItem="5zZ-Cw-MAg" secondAttribute="bottom" constant="123" id="Zti-rQ-7HZ"/>
+                            <constraint firstItem="5zZ-Cw-MAg" firstAttribute="width" secondItem="kfU-TD-4b0" secondAttribute="height" multiplier="3:4" id="bCU-cd-asw"/>
+                            <constraint firstItem="WjN-uh-A0f" firstAttribute="leading" secondItem="kfU-TD-4b0" secondAttribute="leadingMargin" constant="19" id="bmZ-qa-ci6"/>
+                            <constraint firstItem="OJ9-x9-pIo" firstAttribute="top" secondItem="dQJ-9k-mYc" secondAttribute="bottom" constant="16" id="cEX-aY-SI4"/>
+                            <constraint firstItem="oeX-zx-4n2" firstAttribute="leading" secondItem="kfU-TD-4b0" secondAttribute="leadingMargin" constant="-20" id="lQo-P0-EpF"/>
+                            <constraint firstItem="5zZ-Cw-MAg" firstAttribute="centerX" secondItem="kfU-TD-4b0" secondAttribute="centerX" id="ma0-zM-oe2"/>
+                            <constraint firstItem="5zZ-Cw-MAg" firstAttribute="top" secondItem="WjN-uh-A0f" secondAttribute="bottom" constant="50" id="oN2-kF-aDZ"/>
+                            <constraint firstItem="dJH-6q-Xfp" firstAttribute="width" secondItem="oeX-zx-4n2" secondAttribute="width" id="oah-7w-q4G"/>
+                            <constraint firstItem="5zZ-Cw-MAg" firstAttribute="top" secondItem="OJ9-x9-pIo" secondAttribute="bottom" constant="29" id="zql-Bt-pDA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="WjN-uh-A0f" id="QC0-6g-gm5"/>
+                        <outlet property="imageViewer" destination="5zZ-Cw-MAg" id="eYq-MG-dJ2"/>
+                        <outlet property="likeButton" destination="dJH-6q-Xfp" id="NxP-yd-psy"/>
+                        <outlet property="unlikeButton" destination="oeX-zx-4n2" id="5LJ-sP-IIA"/>
+                        <outlet property="userName" destination="OJ9-x9-pIo" id="wMo-Er-tX6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vor-8C-pCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-929.6875" y="253.71093749999997"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -70,6 +152,7 @@
                         <outlet property="mapView" destination="jG3-iB-y6a" id="gR2-zr-zrU"/>
                         <outlet property="phocationsButton" destination="iLR-0B-j4U" id="7uT-nM-sBG"/>
                         <outlet property="settingsButton" destination="XAi-WZ-ZjY" id="NuF-CA-zGs"/>
+                        <segue destination="K1F-yT-UJS" kind="show" identifier="phocationSegue" id="3Dj-SU-Voo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -287,6 +370,6 @@
         <image name="Local" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="alI-GC-bNx"/>
+        <segue reference="dgH-g0-Zfb"/>
     </inferredMetricsTieBreakers>
 </document>
