@@ -19,12 +19,14 @@ class Post : PFObject, PFSubclassing {
     @NSManaged var userLat: String?
     @NSManaged var userLong: String?
     @NSManaged var userLocation: PFGeoPoint?
+    @NSManaged var likes: NSNumber?
     
     var image: UIImage?
     var latitude: String?
     var longitude: String?
     var location: PFGeoPoint?
     var username: String?
+    var likenum: Int?
     
     func upload(){
         if self.image != nil  {
@@ -39,11 +41,13 @@ class Post : PFObject, PFSubclassing {
             self.userLong = self.longitude
             self.userLocation = self.location
             self.userName = self.username
+            self.likes = self.likenum as NSNumber?
             self.saveInBackground {
                 (success: Bool, error: Error?) -> Void in
                 if (success) {
                     // The object has been saved.
                 } else {
+                    print("error")
                     // There was a problem, check error.description
                 }
             }

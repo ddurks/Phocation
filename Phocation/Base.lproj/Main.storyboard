@@ -36,6 +36,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJH-6q-Xfp">
                                 <rect key="frame" x="514" y="911" width="234" height="93"/>
                                 <state key="normal" title="Like"/>
+                                <connections>
+                                    <action selector="likeTapped:" destination="K1F-yT-UJS" eventType="touchUpInside" id="o95-qZ-5F5"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJ9-x9-pIo">
                                 <rect key="frame" x="624" y="36" width="124" height="63"/>
@@ -52,6 +55,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeX-zx-4n2">
                                 <rect key="frame" x="20" y="909" width="257" height="95"/>
                                 <state key="normal" title="Unlike"/>
+                                <connections>
+                                    <action selector="unlikeTapped:" destination="K1F-yT-UJS" eventType="touchUpInside" id="137-yI-kIC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,6 +90,7 @@
                         <outlet property="backButton" destination="WjN-uh-A0f" id="QC0-6g-gm5"/>
                         <outlet property="imageViewer" destination="5zZ-Cw-MAg" id="eYq-MG-dJ2"/>
                         <outlet property="likeButton" destination="dJH-6q-Xfp" id="NxP-yd-psy"/>
+                        <outlet property="numLikes" destination="EwS-IK-UP0" id="yPC-Xs-ZuZ"/>
                         <outlet property="unlikeButton" destination="oeX-zx-4n2" id="5LJ-sP-IIA"/>
                         <outlet property="userName" destination="OJ9-x9-pIo" id="wMo-Er-tX6"/>
                     </connections>

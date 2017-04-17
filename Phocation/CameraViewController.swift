@@ -87,6 +87,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             post.longitude = currentUser.longitude
             post.location = PFGeoPoint(latitude: Double(currentUser.latitude!)!, longitude: Double(currentUser.longitude!)!)
             post.username = PFUser.current()?.username
+            post.likenum = 0
             post.upload()
         }
     }
