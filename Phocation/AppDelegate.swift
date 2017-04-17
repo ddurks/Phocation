@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import Bolts
+import CoreTelephony
 
 let currentUser = UserInfo.sharedUserInfo
 
@@ -40,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.clientKey = "vueavoBmA7q4Ru0Qz387aLD9gMGwRH2o5j2fqKbf"
             $0.server = "https://parseapi.back4app.com"
         }
+        
         Parse.initialize(with: configuration)
         Post.registerSubclass()
         

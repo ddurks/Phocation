@@ -34,6 +34,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var settingsLabel: UILabel!
     
+    @IBOutlet weak var logInButton: UIButton!
+    
+    @IBOutlet weak var signUpButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userName.delegate = self
@@ -47,7 +51,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onUserNameUpdate(_ sender: Any) {
-        let defaults = UserDefaults.standard
+        /*let defaults = UserDefaults.standard
         defaults.set(userName.text, forKey: "User")
         defaults.synchronize()
         
@@ -66,7 +70,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             } else {
                 // Everything went okay
             }
-        }
+        }*/
     }
 
 

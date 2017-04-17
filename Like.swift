@@ -25,7 +25,7 @@ class Like: PFObject, PFSubclassing {
             if (success) {
                 // The object has been saved.
             } else {
-                print("error")
+                print("\(error)")
                 // There was a problem, check error.description
             }
         }

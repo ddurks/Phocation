@@ -97,6 +97,7 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     func removeLike() {
         let query = PFQuery(className: "Like")
         query.whereKey("fromUser", equalTo: currentUser.userName! as String)
+        query.whereKey("toPost", equalTo: self.id!)
         query.findObjectsInBackground {
             (objects, error) -> Void in
             if error == nil {
@@ -112,14 +113,17 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     func isLiked() {
         let query = PFQuery(className: "Like")
         query.whereKey("fromUser", equalTo: currentUser.userName! as String)
+        query.whereKey("toPost", equalTo: self.id!)
         query.findObjectsInBackground {
             (objects, error) -> Void in
             if error == nil {
                     if (objects?.isEmpty)! {
                         self.liked = false
+                        print("empty")
                     }
                     else{
                         self.liked = true
+                        print("found")
                     }
             } else{
                 print("\(error)")
