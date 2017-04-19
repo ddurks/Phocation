@@ -99,6 +99,47 @@
             </objects>
             <point key="canvasLocation" x="-929.6875" y="253.71093749999997"/>
         </scene>
+        <!--My Phocations View Controller-->
+        <scene sceneID="lac-mX-Uq7">
+            <objects>
+                <viewController id="awD-h3-6M9" customClass="MyPhocationsViewController" customModule="Phocation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Vv-fM-KHA"/>
+                        <viewControllerLayoutGuide type="bottom" id="OAS-fa-EWY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hAi-Nl-2L1">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Hi-vc-gdd">
+                                <rect key="frame" x="0.0" y="0.0" width="748" height="1004"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmL-K6-4wO">
+                                <rect key="frame" x="20" y="28" width="70" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="sBv-hS-6MJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5Hi-vc-gdd" firstAttribute="height" secondItem="hAi-Nl-2L1" secondAttribute="height" id="8Gh-GJ-GcO"/>
+                            <constraint firstItem="5Hi-vc-gdd" firstAttribute="leading" secondItem="nmL-K6-4wO" secondAttribute="trailing" constant="-90" id="Dj5-Md-2CQ"/>
+                            <constraint firstItem="5Hi-vc-gdd" firstAttribute="top" secondItem="nmL-K6-4wO" secondAttribute="bottom" constant="-76" id="RNX-nD-HUH"/>
+                            <constraint firstItem="5Hi-vc-gdd" firstAttribute="width" secondItem="hAi-Nl-2L1" secondAttribute="width" id="ykb-MF-rJV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="nmL-K6-4wO" id="9mb-gs-9W1"/>
+                        <outlet property="mapView" destination="5Hi-vc-gdd" id="z2h-Ta-9PT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y6e-P1-9NS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-136.71875" y="-516.2109375"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -144,6 +185,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="awD-h3-6M9" kind="show" id="WXt-Ag-38Z"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGY-Xn-JKx">
                                 <rect key="frame" x="266" y="510" width="68" height="53"/>
@@ -577,7 +621,7 @@
         <image name="Local" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ree-4d-kLV"/>
-        <segue reference="alI-GC-bNx"/>
+        <segue reference="sBv-hS-6MJ"/>
+        <segue reference="ymR-7J-eqi"/>
     </inferredMetricsTieBreakers>
 </document>

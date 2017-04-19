@@ -19,6 +19,8 @@
 		E59B15801E516440004B441E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B157F1E516440004B441E /* CameraViewController.swift */; };
 		E59C6A791EA5404D003810C0 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59C6A781EA5404D003810C0 /* LogInViewController.swift */; };
 		E59C6A7B1EA54131003810C0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59C6A7A1EA54131003810C0 /* SignUpViewController.swift */; };
+		E59F0A081EA79F0600E97276 /* MyPhocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F0A071EA79F0600E97276 /* MyPhocationsViewController.swift */; };
+		E59F0A0C1EA7A2AD00E97276 /* MyPhocationViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F0A0B1EA7A2AD00E97276 /* MyPhocationViewer.swift */; };
 		E5EB51601E8B5119008D11E2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB515F1E8B5119008D11E2 /* AudioToolbox.framework */; };
 		E5EB51621E8B5122008D11E2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB51611E8B5122008D11E2 /* CFNetwork.framework */; };
 		E5EB51641E8B512C008D11E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB51631E8B512C008D11E2 /* CoreGraphics.framework */; };
@@ -69,6 +71,8 @@
 		E59B157F1E516440004B441E /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Phocation/CameraViewController.swift; sourceTree = "<group>"; };
 		E59C6A781EA5404D003810C0 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E59C6A7A1EA54131003810C0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		E59F0A071EA79F0600E97276 /* MyPhocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPhocationsViewController.swift; sourceTree = "<group>"; };
+		E59F0A0B1EA7A2AD00E97276 /* MyPhocationViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPhocationViewer.swift; sourceTree = "<group>"; };
 		E5EB515F1E8B5119008D11E2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E5EB51611E8B5122008D11E2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E5EB51631E8B512C008D11E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -141,6 +145,7 @@
 				E5909B5A1EA298950001734C /* PhocationViewController.swift */,
 				E59C6A781EA5404D003810C0 /* LogInViewController.swift */,
 				E59C6A7A1EA54131003810C0 /* SignUpViewController.swift */,
+				E59F0A071EA79F0600E97276 /* MyPhocationsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				E5909B581EA2912D0001734C /* PhocationViewer.swift */,
 				E5909B601EA321BA0001734C /* PhocationAnnotationView.swift */,
 				E59276091EA51F68004CF23C /* Like.swift */,
+				E59F0A0B1EA7A2AD00E97276 /* MyPhocationViewer.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -384,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E59F0A0C1EA7A2AD00E97276 /* MyPhocationViewer.swift in Sources */,
 				E5EEFC2E1E5149970024B36A /* MainViewController.swift in Sources */,
 				E5909B571EA28CD50001734C /* Phocation.swift in Sources */,
 				E5EEFC2C1E5149970024B36A /* AppDelegate.swift in Sources */,
@@ -394,6 +401,7 @@
 				E5909B591EA2912D0001734C /* PhocationViewer.swift in Sources */,
 				E59C6A791EA5404D003810C0 /* LogInViewController.swift in Sources */,
 				E592760A1EA51F68004CF23C /* Like.swift in Sources */,
+				E59F0A081EA79F0600E97276 /* MyPhocationsViewController.swift in Sources */,
 				E5909B611EA321BA0001734C /* PhocationAnnotationView.swift in Sources */,
 				E59C6A7B1EA54131003810C0 /* SignUpViewController.swift in Sources */,
 				E57C3B371E8C44B4007DA47D /* Post.swift in Sources */,
