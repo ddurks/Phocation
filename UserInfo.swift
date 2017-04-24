@@ -17,6 +17,7 @@ class UserInfo {
     var password:String?
     var latitude:String?
     var longitude:String?
+    var lifespan:Int?
     
     init(){
 

@@ -32,8 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.register(defaults: defaultPass)
         }
         
+        if defaults.string(forKey: "Lifespan") == nil {
+            let defaultPass = ["Lifespan" : "24"]
+            defaults.register(defaults: defaultPass)
+        }
+        
         currentUser.userName = defaults.string(forKey: "User")
         currentUser.password = defaults.string(forKey: "Pass")
+        currentUser.lifespan = Int(defaults.string(forKey: "Lifespan")!)
         
         // Initialize Parse.
         let configuration = ParseClientConfiguration {

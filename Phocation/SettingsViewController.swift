@@ -14,15 +14,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var settingsBackButton: UIButton!
     
-    @IBOutlet weak var userName: UITextField!
-    
-    @IBOutlet weak var localGlobalSwitch: UISwitch!
-    
-    @IBOutlet weak var local: UILabel!
-    
-    @IBOutlet weak var global: UILabel!
-    
-    @IBOutlet weak var photoVisLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+
+    @IBOutlet weak var currUser: UILabel!
     
     @IBOutlet weak var lifeSpan: UILabel!
     
@@ -40,9 +34,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.userName.delegate = self
         // Do any additional setup after loading the view.
-        userName.text = currentUser.userName
+        currUser.text = "Username: " + currentUser.userName!
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

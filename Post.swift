@@ -20,6 +20,7 @@ class Post : PFObject, PFSubclassing {
     @NSManaged var userLong: String?
     @NSManaged var userLocation: PFGeoPoint?
     @NSManaged var likes: NSNumber?
+    @NSManaged var lifespan: NSNumber?
     
     var image: UIImage?
     var latitude: String?
@@ -27,6 +28,7 @@ class Post : PFObject, PFSubclassing {
     var location: PFGeoPoint?
     var username: String?
     var likenum: Int?
+    var life: Int?
     
     func upload(){
         if self.image != nil  {
@@ -42,6 +44,7 @@ class Post : PFObject, PFSubclassing {
             self.userLocation = self.location
             self.userName = self.username
             self.likes = self.likenum as NSNumber?
+            self.lifespan = self.life as NSNumber?
             self.saveInBackground {
                 (success: Bool, error: Error?) -> Void in
                 if (success) {

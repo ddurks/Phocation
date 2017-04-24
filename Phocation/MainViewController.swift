@@ -54,8 +54,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
                         let long = object["userLong"] as! String
                         let id = object.objectId as String!
                         let user = object["userName"] as! String
-                        let user_id = user + ":" + id!
-                        print("\(user_id)")
                         let longD = Double(long), latD = Double(lat)
                         print("\(lat) \(long) \(id)")
                         let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latD!, longD!)

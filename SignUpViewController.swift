@@ -21,51 +21,63 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var signUpButton: UIButton!
     
-    var username: String?
-    var password: String?
+    var username = ""
+    var password = ""
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    @IBAction func onUsernameEdit(_ sender: Any) {
+        self.signUpButton.isEnabled = false
+    }
     @IBAction func onUsernameUpdate(_ sender: Any) {
-        self.username = usernameField.text
+        self.username = usernameField.text!
+        self.signUpButton.isEnabled = true
     }
     
+    @IBAction func onPasswordEdit(_ sender: Any) {
+        self.signUpButton.isEnabled = false
+    }
     @IBAction func onPasswordUpdate(_ sender: Any) {
-        self.password = passwordField.text
+        self.password = passwordField.text!
+        self.signUpButton.isEnabled = true
     }
     
     @IBAction func signUpPressed(_ sender: Any) {
-        let user = PFUser()
-        user.username = self.username
-        user.password = self.password
-        user.signUpInBackground {
-            (success, error) -> Void in
-            if let error = error as NSError? {
-                _ = error.userInfo["error"] as? NSString
-                // In case something went wrong, use errorString to get the error
-                let alert = UIAlertController(title: "Invalid Username", message: "Username in use, Please Enter a different one", preferredStyle: UIAlertControllerStyle.alert)
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                // Everything went okay
-                currentUser.userName = self.username
-                currentUser.password = self.password
-                let defaults = UserDefaults.standard
-                defaults.set(currentUser.userName, forKey: "User")
-                defaults.set(currentUser.password, forKey: "Pass")
-                defaults.synchronize()
+            let user = PFUser()
+            user.username = self.username
+            user.password = self.password
+            user.signUpInBackground {
+                (success, error) -> Void in
+                if let error = error as NSError? {
+                    _ = error.userInfo["error"] as? NSString
+                    // In case something went wrong, use errorString to get the error
+                    let alert = UIAlertController(title: "Invalid Username", message: "Username in use, Please Enter a different one", preferredStyle: UIAlertControllerStyle.alert)
+                    let okAction = UIAlertAction(title: "Try Again", style: .cancel)
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    // Everything went okay
+                    currentUser.userName = self.username
+                    currentUser.password = self.password
+                    let defaults = UserDefaults.standard
+                    defaults.set(currentUser.userName, forKey: "User")
+                    defaults.set(currentUser.password, forKey: "Pass")
+                    defaults.synchronize()
+                    let message = "Username: " + currentUser.userName!
+                    let alert = UIAlertController(title: "Signed up", message: message, preferredStyle: UIAlertControllerStyle.alert)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel)
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
-        }
     }
     
     override func viewDidLoad() {
         self.usernameField.delegate = self
         self.passwordField.delegate = self
-        self.usernameField.text = currentUser.userName
-        self.passwordField.text = currentUser.password
-        
     }
     
     override func didReceiveMemoryWarning() {

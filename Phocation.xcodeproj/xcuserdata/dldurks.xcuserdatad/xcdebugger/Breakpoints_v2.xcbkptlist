@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Phocation/SettingsViewController.swift"
-            timestampString = "514151326.838492"
+            timestampString = "514740008.898466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "onUserNameUpdate(_:)"
             landmarkType = "7">
          </BreakpointContent>
