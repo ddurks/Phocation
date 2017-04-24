@@ -27,6 +27,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
     
     var drawer = PhocationAnnotationView()
     
+    var resultSearchController:UISearchController? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,6 +40,19 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
+        
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        self.resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        self.resultSearchController?.searchResultsUpdater = locationSearchTable
+        
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.titleView = resultSearchController?.searchBar
+        
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
 
         let phocations = PFQuery(className: "Post")
         phocations.findObjectsInBackground {
@@ -66,7 +81,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
                 print("Error: \(error!) ")
             }
         }
-
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
