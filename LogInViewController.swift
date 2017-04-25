@@ -13,8 +13,6 @@ import Bolts
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var backButton: UIButton!
-    
     @IBOutlet weak var usernameField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
@@ -90,7 +88,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.passwordField.delegate = self
         self.usernameField.text = currentUser.userName
         self.passwordField.text = currentUser.password
-        
+        self.navigationItem.title = "LOG IN"
     }
     
     override func didReceiveMemoryWarning() {

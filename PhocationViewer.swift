@@ -54,7 +54,7 @@ extension MainViewController: MKMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "phocationSegue"){        
             let phocationViewController = (segue.destination as! PhocationViewController)
-            phocationViewController.id = (sender as! MKAnnotationView).annotation!.title!
+            phocationViewController.id = (sender as! MKAnnotationView).annotation!.subtitle!
         }
     }
 }

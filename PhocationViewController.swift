@@ -13,8 +13,6 @@ import Bolts
 
 class PhocationViewController: UIViewController, UINavigationControllerDelegate {
     
-    @IBOutlet weak var backButton: UIButton!
-    
     @IBOutlet weak var imageViewer: UIImageView!
     
     @IBOutlet weak var likeButton: UIButton!
@@ -24,6 +22,10 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     @IBOutlet weak var userName: UILabel!
     
     @IBOutlet weak var numLikes: UILabel!
+    
+    var likeImage = UIImage(named: "phocationHeart.png")
+    
+    var unlikeImage = UIImage(named: "phocationBrokenHeart.png")
     
     var id:String?
     
@@ -42,6 +44,9 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     }
     
     override func viewDidLoad() {
+        self.navigationItem.title = "PHOCATION"
+        self.likeButton.setImage(likeImage, for: UIControlState.normal )
+        self.unlikeButton.setImage(unlikeImage, for: UIControlState.normal)
         self.likeButton.isEnabled = false
         self.unlikeButton.isEnabled = false
         self.isLiked()

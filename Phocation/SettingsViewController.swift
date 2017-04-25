@@ -26,14 +26,13 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var twoFourHours: UILabel!
     
-    @IBOutlet weak var settingsLabel: UILabel!
-    
     @IBOutlet weak var logInButton: UIButton!
     
     @IBOutlet weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "SETTINGS"
         // Do any additional setup after loading the view.
         currUser.text = "Username: " + currentUser.userName!
     }

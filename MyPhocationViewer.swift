@@ -32,7 +32,7 @@ extension MyPhocationsViewController: MKMapViewDelegate {
             view.isEnabled = true
             
             // Resize image
-            let pinImage = UIImage(named: "redCircle.png")
+            let pinImage = UIImage(named: "annotationCircle.png")
             let size = CGSize(width: 25, height: 25)
             UIGraphicsBeginImageContext(size)
             pinImage!.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
@@ -54,7 +54,7 @@ extension MyPhocationsViewController: MKMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "phocationSegue"){
             let phocationViewController = (segue.destination as! PhocationViewController)
-            phocationViewController.id = (sender as! MKAnnotationView).annotation!.title!
+            phocationViewController.id = (sender as! MKAnnotationView).annotation!.subtitle!
         }
     }
 }

@@ -11,6 +11,10 @@ import MapKit
 import Parse
 import CoreLocation
 
+protocol HandleMapSearch {
+    func zoomTo(placemark:MKPlacemark)
+}
+
 class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -20,6 +24,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
     @IBOutlet weak var phocationsButton: UIButton!
     
     @IBOutlet weak var newPhotoButton: UIButton!
+    
     
     let locationManager = CLLocationManager()
     
@@ -32,6 +37,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        navigationController?.navigationBar.barTintColor = UIColor.orange
+        navigationController?.navigationBar.tintColor = UIColor.magenta
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.cyan]
         
         mapView.delegate = self
         
@@ -53,6 +62,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
+        
+        locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
 
         let phocations = PFQuery(className: "Post")
         phocations.findObjectsInBackground {
@@ -105,3 +117,17 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
 
 }
 
+extension MainViewController: HandleMapSearch {
+
+    func zoomTo(placemark:MKPlacemark){
+
+        let coordinate = placemark.coordinate
+        
+        let center = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
+        
+        self.mapView.setRegion(region, animated: true)
+    }
+    
+}

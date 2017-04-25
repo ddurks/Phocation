@@ -12,8 +12,6 @@ import Parse
 import Bolts
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var usernameField: UITextField!
     
@@ -78,7 +76,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         self.usernameField.delegate = self
         self.passwordField.delegate = self
-    }
+        self.navigationItem.title = "SIGN UP"    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

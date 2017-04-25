@@ -14,8 +14,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBOutlet weak var imageViewer: UIImageView!
     
-    @IBOutlet weak var backButton: UIButton!
-    
     @IBOutlet weak var takeButton: UIButton!
     
     @IBOutlet weak var chooseButton: UIButton!
@@ -30,7 +28,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.title = "NEW PHOCATION"
         imagePicker.delegate = self
         postButton.isEnabled = false
     }

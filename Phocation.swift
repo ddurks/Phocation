@@ -15,7 +15,8 @@ class Phocation: MKPointAnnotation {
     
     init(id: String, user: String, coordinate: CLLocationCoordinate2D) {
         super.init()
-        self.title = id
+        self.title = user
+        self.subtitle = id
         self.id = id
         self.user = user
         self.coordinate = coordinate

@@ -17,8 +17,6 @@ class MyPhocationsViewController: UIViewController, CLLocationManagerDelegate, U
 
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBOutlet weak var backButton: UIButton!
-    
     let locationManager = CLLocationManager()
     
     var posts = NSMutableArray()
@@ -36,6 +34,7 @@ class MyPhocationsViewController: UIViewController, CLLocationManagerDelegate, U
         locationManager.startUpdatingLocation()
         //mapView.showsUserLocation = true
         
+        print("\(currentUser.userName)")
         let phocations = PFQuery(className: "Post")
         phocations.whereKey("userName", equalTo: currentUser.userName! as String)
         phocations.findObjectsInBackground {
@@ -70,7 +69,7 @@ class MyPhocationsViewController: UIViewController, CLLocationManagerDelegate, U
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+
         let location = locations.last
         
         currentUser.latitude = String(format: "%f", (location?.coordinate.latitude)!)
@@ -83,6 +82,7 @@ class MyPhocationsViewController: UIViewController, CLLocationManagerDelegate, U
         self.mapView.setRegion(region, animated: true)
         
         self.locationManager.stopUpdatingLocation()
+
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
