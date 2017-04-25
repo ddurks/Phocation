@@ -12,13 +12,15 @@ import MapKit
 class Phocation: MKPointAnnotation {
     var id: String?
     var user: String?
+    var image: UIImage?
     
-    init(id: String, user: String, coordinate: CLLocationCoordinate2D) {
+    init(id: String, user: String, coordinate: CLLocationCoordinate2D, image: UIImage) {
         super.init()
         self.title = user
         self.subtitle = id
         self.id = id
         self.user = user
         self.coordinate = coordinate
+        self.image = image
     }
 }

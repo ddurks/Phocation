@@ -31,6 +31,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.navigationItem.title = "NEW PHOCATION"
         imagePicker.delegate = self
         postButton.isEnabled = false
+        let barButton = UIBarButtonItem(customView: self.postButton)
+        self.navigationItem.rightBarButtonItem = barButton
+
     }
     
     @IBAction func postPhoto(_ sender: Any) {

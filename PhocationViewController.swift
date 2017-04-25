@@ -29,6 +29,8 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     
     var id:String?
     
+    var image: UIImage?
+    
     var liked:Bool? {
         didSet {
             self.likeButton.isEnabled = !self.liked!
@@ -45,8 +47,8 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     
     override func viewDidLoad() {
         self.navigationItem.title = "PHOCATION"
-        self.likeButton.setImage(likeImage, for: UIControlState.normal )
-        self.unlikeButton.setImage(unlikeImage, for: UIControlState.normal)
+        //self.likeButton.setImage(likeImage, for: UIControlState.normal )
+        //self.unlikeButton.setImage(unlikeImage, for: UIControlState.normal)
         self.likeButton.isEnabled = false
         self.unlikeButton.isEnabled = false
         self.isLiked()

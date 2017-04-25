@@ -56,8 +56,15 @@ class MyPhocationsViewController: UIViewController, CLLocationManagerDelegate, U
                         let longD = Double(long), latD = Double(lat)
                         print("\(lat) \(long) \(id)")
                         let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latD!, longD!)
-                        let objectAnnotation = Phocation(id: id!, user: user, coordinate: pinLocation)
-                        self.mapView.addAnnotation(objectAnnotation)
+                        let thumbnail = object["imageFile"] as! PFFile
+                        thumbnail.getDataInBackground{(imageData: Data?, error: Error?) -> Void in
+                            if error == nil {
+                                if let image = UIImage(data: imageData!) {
+                                    let phImage = image
+                                    let objectAnnotation = Phocation(id: id!, user: user, coordinate: pinLocation, image: phImage)
+                                    self.mapView.addAnnotation(objectAnnotation)                                }
+                            }
+                        }
                     }
                 }
             } else {

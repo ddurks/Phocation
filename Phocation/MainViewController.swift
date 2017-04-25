@@ -25,7 +25,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
     
     @IBOutlet weak var newPhotoButton: UIButton!
     
-    
     let locationManager = CLLocationManager()
     
     var posts = NSMutableArray()
@@ -33,6 +32,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
     var drawer = PhocationAnnotationView()
     
     var resultSearchController:UISearchController? = nil
+    
+    var sendID: String?
+    
+    var sendImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,8 +87,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
                         let longD = Double(long), latD = Double(lat)
                         print("\(lat) \(long) \(id)")
                         let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latD!, longD!)
-                        let objectAnnotation = Phocation(id: id!, user: user, coordinate: pinLocation)
-                        self.mapView.addAnnotation(objectAnnotation)
+                        let thumbnail = object["imageFile"] as! PFFile
+                        thumbnail.getDataInBackground{(imageData: Data?, error: Error?) -> Void in
+                            if error == nil {
+                                if let image = UIImage(data: imageData!) {
+                                    let objectAnnotation = Phocation(id: id!, user: user, coordinate: pinLocation, image: image)
+                                    self.mapView.addAnnotation(objectAnnotation)                                }
+                            }
+                        }
+
                     }
                 }
             } else {

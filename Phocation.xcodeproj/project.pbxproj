@@ -19,6 +19,8 @@
 		E5909B611EA321BA0001734C /* PhocationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5909B601EA321BA0001734C /* PhocationAnnotationView.swift */; };
 		E5909B6B1EA336970001734C /* annotationCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = E5909B6A1EA336970001734C /* annotationCircle.png */; };
 		E592760A1EA51F68004CF23C /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59276091EA51F68004CF23C /* Like.swift */; };
+		E59B08931EAFB4DC0014F43C /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E59B08921EAFB4DC0014F43C /* CustomCalloutView.xib */; };
+		E59B08951EAFB6580014F43C /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B08941EAFB6580014F43C /* CustomCalloutView.swift */; };
 		E59B15801E516440004B441E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B157F1E516440004B441E /* CameraViewController.swift */; };
 		E59C6A791EA5404D003810C0 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59C6A781EA5404D003810C0 /* LogInViewController.swift */; };
 		E59C6A7B1EA54131003810C0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59C6A7A1EA54131003810C0 /* SignUpViewController.swift */; };
@@ -74,6 +76,8 @@
 		E5909B601EA321BA0001734C /* PhocationAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhocationAnnotationView.swift; sourceTree = "<group>"; };
 		E5909B6A1EA336970001734C /* annotationCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = annotationCircle.png; sourceTree = "<group>"; };
 		E59276091EA51F68004CF23C /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		E59B08921EAFB4DC0014F43C /* CustomCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCalloutView.xib; sourceTree = "<group>"; };
+		E59B08941EAFB6580014F43C /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
 		E59B157F1E516440004B441E /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Phocation/CameraViewController.swift; sourceTree = "<group>"; };
 		E59C6A781EA5404D003810C0 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E59C6A7A1EA54131003810C0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		E57C3B351E8C449D007DA47D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E59B08941EAFB6580014F43C /* CustomCalloutView.swift */,
 				E57C3B361E8C44B4007DA47D /* Post.swift */,
 				E57C3B381E8C4998007DA47D /* UserInfo.swift */,
 				E5909B561EA28CD50001734C /* Phocation.swift */,
@@ -177,6 +182,7 @@
 				E54965CE1EAEFC2C0037E4E6 /* phocationHeart.png */,
 				E54965CC1EAEFC260037E4E6 /* phocationBrokenHeart.png */,
 				E5909B6A1EA336970001734C /* annotationCircle.png */,
+				E59B08921EAFB4DC0014F43C /* CustomCalloutView.xib */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -376,6 +382,7 @@
 				E54965CF1EAEFC2C0037E4E6 /* phocationHeart.png in Resources */,
 				E5909B6B1EA336970001734C /* annotationCircle.png in Resources */,
 				E5EEFC331E5149970024B36A /* Assets.xcassets in Resources */,
+				E59B08931EAFB4DC0014F43C /* CustomCalloutView.xib in Resources */,
 				E5EEFC311E5149970024B36A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +422,7 @@
 				E58A14661EAE8B83006353FE /* LocationSearchTable.swift in Sources */,
 				E59F0A081EA79F0600E97276 /* MyPhocationsViewController.swift in Sources */,
 				E5909B611EA321BA0001734C /* PhocationAnnotationView.swift in Sources */,
+				E59B08951EAFB6580014F43C /* CustomCalloutView.swift in Sources */,
 				E59C6A7B1EA54131003810C0 /* SignUpViewController.swift in Sources */,
 				E57C3B371E8C44B4007DA47D /* Post.swift in Sources */,
 			);
