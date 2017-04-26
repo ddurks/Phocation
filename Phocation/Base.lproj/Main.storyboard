@@ -23,21 +23,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5zZ-Cw-MAg">
-                                <rect key="frame" x="0.0" y="195" width="768" height="585"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="user" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJ9-x9-pIo">
-                                <rect key="frame" x="36" y="90" width="124" height="63"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwS-IK-UP0">
+                                <rect key="frame" x="717" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwS-IK-UP0">
-                                <rect key="frame" x="665" y="101" width="31" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="textColor" red="1" green="0.50196078430000002" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5zZ-Cw-MAg">
+                                <rect key="frame" x="0.0" y="195" width="768" height="585"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJH-6q-Xfp">
                                 <rect key="frame" x="628" y="896" width="120" height="120"/>
                                 <state key="normal" title="Like"/>
@@ -58,15 +53,11 @@
                         <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="dJH-6q-Xfp" secondAttribute="trailing" id="2j6-5p-6Tb"/>
-                            <constraint firstItem="OJ9-x9-pIo" firstAttribute="top" secondItem="dQJ-9k-mYc" secondAttribute="bottom" constant="25" id="8X5-fH-AM6"/>
                             <constraint firstAttribute="leadingMargin" secondItem="oeX-zx-4n2" secondAttribute="leading" id="9IC-mP-rtn"/>
-                            <constraint firstItem="EwS-IK-UP0" firstAttribute="top" secondItem="dQJ-9k-mYc" secondAttribute="bottom" constant="25" id="Jkq-uO-Dmr"/>
                             <constraint firstItem="5zZ-Cw-MAg" firstAttribute="height" secondItem="kfU-TD-4b0" secondAttribute="height" id="Mh5-tS-fj1"/>
-                            <constraint firstItem="OJ9-x9-pIo" firstAttribute="leading" secondItem="kfU-TD-4b0" secondAttribute="leadingMargin" constant="25" id="RRz-DG-etV"/>
                             <constraint firstItem="5zZ-Cw-MAg" firstAttribute="width" secondItem="kfU-TD-4b0" secondAttribute="width" id="VpC-40-sYK"/>
                             <constraint firstItem="HrX-Oz-9as" firstAttribute="top" secondItem="oeX-zx-4n2" secondAttribute="bottom" constant="8" id="oKS-5O-XXW"/>
                             <constraint firstItem="HrX-Oz-9as" firstAttribute="top" secondItem="dJH-6q-Xfp" secondAttribute="bottom" constant="8" id="r00-uE-aVE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="EwS-IK-UP0" secondAttribute="trailing" constant="25" id="sk0-dr-IUe"/>
                         </constraints>
                     </view>
                     <connections>
@@ -74,7 +65,6 @@
                         <outlet property="likeButton" destination="dJH-6q-Xfp" id="NxP-yd-psy"/>
                         <outlet property="numLikes" destination="EwS-IK-UP0" id="yPC-Xs-ZuZ"/>
                         <outlet property="unlikeButton" destination="oeX-zx-4n2" id="5LJ-sP-IIA"/>
-                        <outlet property="userName" destination="OJ9-x9-pIo" id="wMo-Er-tX6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vor-8C-pCa" userLabel="First Responder" sceneMemberID="firstResponder"/>

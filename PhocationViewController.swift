@@ -19,8 +19,6 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     
     @IBOutlet weak var unlikeButton: UIButton!
     
-    @IBOutlet weak var userName: UILabel!
-    
     @IBOutlet weak var numLikes: UILabel!
     
     var likeImage = UIImage(named: "phocationHeart.png")
@@ -46,17 +44,27 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     }
     
     override func viewDidLoad() {
-        self.navigationItem.title = "PHOCATION"
         //self.likeButton.setImage(likeImage, for: UIControlState.normal )
         //self.unlikeButton.setImage(unlikeImage, for: UIControlState.normal)
+        self.numLikes.backgroundColor = UIColor(patternImage: UIImage(named: "phocationHeart.png")!)
+        let barLikes = UIBarButtonItem(customView: self.numLikes)
+        self.navigationItem.rightBarButtonItem = barLikes
         self.likeButton.isEnabled = false
         self.unlikeButton.isEnabled = false
         self.isLiked()
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeUp.direction = UISwipeGestureRecognizerDirection.up
+        self.view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+        self.view.addGestureRecognizer(swipeDown)
+        
         let query = PFQuery(className: "Post")
         query.getObjectInBackground(withId: self.id!) {
             (object: PFObject?, error: Error?) -> Void in
             if error == nil && object != nil {
-                self.userName.text = object?["userName"] as? String
+                self.navigationItem.title = object?["userName"] as? String
                 let thumbnail = object?["imageFile"] as! PFFile
                 thumbnail.getDataInBackground{(imageData: Data?, error: Error?) -> Void in
                     if error == nil {
@@ -74,6 +82,27 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
         //imageViewer.contentMode = .scaleAspectFit
         //imageViewer.image = currentUser.currImage
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.down:
+                if self.liked == false {
+                    self.getLikes(change: -1)
+                    self.removeLike()
+                    self.liked = true
+                }
+            case UISwipeGestureRecognizerDirection.up:
+                if self.liked == true {
+                    self.getLikes(change: 1)
+                    self.addLike()
+                    self.liked = false
+                }
+            default:
+                break
+            }
+        }
     }
     
     func getLikes(change: Int) {
