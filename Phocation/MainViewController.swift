@@ -92,7 +92,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
                             if error == nil {
                                 if let image = UIImage(data: imageData!) {
                                     let objectAnnotation = Phocation(id: id!, user: user, coordinate: pinLocation, image: image)
-                                    self.mapView.addAnnotation(objectAnnotation)                                }
+                                    self.mapView.addAnnotation(objectAnnotation)                               }
                             }
                         }
 

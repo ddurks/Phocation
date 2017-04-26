@@ -48,12 +48,6 @@ extension MainViewController: MKMapViewDelegate {
         return nil
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView {
-            super.performSegue(withIdentifier: "phocationSegue", sender: view)
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "phocationSegue"){        
             let phocationViewController = (segue.destination as! PhocationViewController)
