@@ -90,7 +90,21 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             post.username = PFUser.current()?.username
             post.likenum = 0
             post.life = 24
+            post.live = 1
             post.upload()
+            post.saveInBackground {
+                (success: Bool, error: Error?) -> Void in
+                if (success) {
+                    // The object has been saved.
+                    let alert = UIAlertController(title: "Posted", message: "Phocation has been posted", preferredStyle: UIAlertControllerStyle.alert)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel)
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    print("error")
+                    // There was a problem, check error.description
+                }
+            }
         }
     }
     

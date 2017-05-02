@@ -23,6 +23,8 @@ class MyPhocationsViewController: UIViewController, CLLocationManagerDelegate, U
     
     var drawer = PhocationAnnotationView()
     
+    var sendID: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

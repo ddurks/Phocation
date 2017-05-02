@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E54965CD1EAEFC260037E4E6 /* phocationBrokenHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = E54965CC1EAEFC260037E4E6 /* phocationBrokenHeart.png */; };
-		E54965CF1EAEFC2C0037E4E6 /* phocationHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = E54965CE1EAEFC2C0037E4E6 /* phocationHeart.png */; };
 		E54F41D71E52520B00FDBD0E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */; };
+		E55B04831EB1585F008011E5 /* phocationLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E55B04821EB1585F008011E5 /* phocationLogo.png */; };
 		E57C3B371E8C44B4007DA47D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57C3B361E8C44B4007DA47D /* Post.swift */; };
 		E57C3B391E8C4998007DA47D /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57C3B381E8C4998007DA47D /* UserInfo.swift */; };
 		E58A14661EAE8B83006353FE /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A14651EAE8B83006353FE /* LocationSearchTable.swift */; };
@@ -64,9 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E54965CC1EAEFC260037E4E6 /* phocationBrokenHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phocationBrokenHeart.png; sourceTree = "<group>"; };
-		E54965CE1EAEFC2C0037E4E6 /* phocationHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phocationHeart.png; sourceTree = "<group>"; };
 		E54F41D61E52520B00FDBD0E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Phocation/SettingsViewController.swift; sourceTree = "<group>"; };
+		E55B04821EB1585F008011E5 /* phocationLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phocationLogo.png; sourceTree = "<group>"; };
 		E57C3B361E8C44B4007DA47D /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E57C3B381E8C4998007DA47D /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		E58A14651EAE8B83006353FE /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
@@ -179,8 +177,7 @@
 		E5909B6C1EA3369D0001734C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				E54965CE1EAEFC2C0037E4E6 /* phocationHeart.png */,
-				E54965CC1EAEFC260037E4E6 /* phocationBrokenHeart.png */,
+				E55B04821EB1585F008011E5 /* phocationLogo.png */,
 				E5909B6A1EA336970001734C /* annotationCircle.png */,
 				E59B08921EAFB4DC0014F43C /* CustomCalloutView.xib */,
 			);
@@ -377,9 +374,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E54965CD1EAEFC260037E4E6 /* phocationBrokenHeart.png in Resources */,
 				E5EEFC361E5149970024B36A /* LaunchScreen.storyboard in Resources */,
-				E54965CF1EAEFC2C0037E4E6 /* phocationHeart.png in Resources */,
+				E55B04831EB1585F008011E5 /* phocationLogo.png in Resources */,
 				E5909B6B1EA336970001734C /* annotationCircle.png in Resources */,
 				E5EEFC331E5149970024B36A /* Assets.xcassets in Resources */,
 				E59B08931EAFB4DC0014F43C /* CustomCalloutView.xib in Resources */,

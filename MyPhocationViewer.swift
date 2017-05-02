@@ -18,16 +18,13 @@ extension MyPhocationsViewController: MKMapViewDelegate {
         
         if annotation is Phocation {
             let annotation = annotation as! Phocation
-            var view: MKAnnotationView
+            var view: PhocationAnnotationView
             if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation.title!) { // 2
                 dequeuedView.annotation = annotation
-                view = dequeuedView
+                view = dequeuedView as! PhocationAnnotationView
             } else {
                 // 3
-                view = MKAnnotationView(annotation: annotation,reuseIdentifier: annotation.title)
-                view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: -5, y: 5)
-                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+                view = PhocationAnnotationView(annotation: annotation,reuseIdentifier: annotation.title)
             }
             view.isEnabled = true
             
@@ -45,16 +42,39 @@ extension MyPhocationsViewController: MKMapViewDelegate {
         return nil
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView {
-            super.performSegue(withIdentifier: "phocationSegue", sender: view)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "phocationSegue1"){
+            let phocationViewController = (segue.destination as! PhocationViewController)
+            phocationViewController.id = self.sendID
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "phocationSegue"){
-            let phocationViewController = (segue.destination as! PhocationViewController)
-            phocationViewController.id = (sender as! MKAnnotationView).annotation!.subtitle!
+    func showPhocation(sender:UIButton){
+        super.performSegue(withIdentifier: "phocationSegue1", sender: view)
+    }
+    
+    func mapView(_ mapView: MKMapView,
+                 didSelect view: MKAnnotationView)
+    {
+        // 1
+        if view.annotation is MKUserLocation
+        {
+            // Don't proceed with custom callout
+            return
         }
+        // 2
+        let phAnnotation = view.annotation as! Phocation
+        let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
+        let calloutView = views?[0] as! CustomCalloutView
+        calloutView.phocationImage.contentMode = .scaleAspectFit
+        calloutView.phocationImage.image = phAnnotation.image
+        self.sendID = phAnnotation.id
+        let button = UIButton(frame: calloutView.phocationImage.frame)
+        button.addTarget(self, action: #selector(MyPhocationsViewController.showPhocation(sender:)), for: .touchUpInside)
+        calloutView.addSubview(button)
+        // 3
+        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
+        view.addSubview(calloutView)
+        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
     }
 }

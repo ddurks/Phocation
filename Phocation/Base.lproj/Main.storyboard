@@ -33,38 +33,30 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5zZ-Cw-MAg">
                                 <rect key="frame" x="0.0" y="195" width="768" height="585"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJH-6q-Xfp">
-                                <rect key="frame" x="628" y="896" width="120" height="120"/>
-                                <state key="normal" title="Like"/>
-                                <connections>
-                                    <action selector="likeTapped:" destination="K1F-yT-UJS" eventType="touchUpInside" id="o95-qZ-5F5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeX-zx-4n2">
-                                <rect key="frame" x="20" y="896" width="120" height="120"/>
-                                <state key="normal" title="Unlike">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWa-ni-Rft">
+                                <rect key="frame" x="20" y="974" width="62" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="1" green="0.50196078430000002" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="unlikeTapped:" destination="K1F-yT-UJS" eventType="touchUpInside" id="137-yI-kIC"/>
+                                    <action selector="deletePost:" destination="K1F-yT-UJS" eventType="touchUpInside" id="vR4-wf-vjN"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="dJH-6q-Xfp" secondAttribute="trailing" id="2j6-5p-6Tb"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="oeX-zx-4n2" secondAttribute="leading" id="9IC-mP-rtn"/>
                             <constraint firstItem="5zZ-Cw-MAg" firstAttribute="height" secondItem="kfU-TD-4b0" secondAttribute="height" id="Mh5-tS-fj1"/>
                             <constraint firstItem="5zZ-Cw-MAg" firstAttribute="width" secondItem="kfU-TD-4b0" secondAttribute="width" id="VpC-40-sYK"/>
-                            <constraint firstItem="HrX-Oz-9as" firstAttribute="top" secondItem="oeX-zx-4n2" secondAttribute="bottom" constant="8" id="oKS-5O-XXW"/>
-                            <constraint firstItem="HrX-Oz-9as" firstAttribute="top" secondItem="dJH-6q-Xfp" secondAttribute="bottom" constant="8" id="r00-uE-aVE"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="HWa-ni-Rft" secondAttribute="leading" id="jEr-c2-2Q3"/>
+                            <constraint firstItem="HrX-Oz-9as" firstAttribute="top" secondItem="HWa-ni-Rft" secondAttribute="bottom" constant="20" id="yBg-pM-9BY"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="HWa-ni-Rft" id="h2z-31-gdX"/>
                         <outlet property="imageViewer" destination="5zZ-Cw-MAg" id="eYq-MG-dJ2"/>
-                        <outlet property="likeButton" destination="dJH-6q-Xfp" id="NxP-yd-psy"/>
                         <outlet property="numLikes" destination="EwS-IK-UP0" id="yPC-Xs-ZuZ"/>
-                        <outlet property="unlikeButton" destination="oeX-zx-4n2" id="5LJ-sP-IIA"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="deleteSegue" id="mFO-yI-yUS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vor-8C-pCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -95,7 +87,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="5Hi-vc-gdd" id="z2h-Ta-9PT"/>
-                        <segue destination="K1F-yT-UJS" kind="show" identifier="phocationSegue" id="Z05-PE-Ip4"/>
+                        <segue destination="K1F-yT-UJS" kind="show" identifier="phocationSegue1" id="Z05-PE-Ip4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6e-P1-9NS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -295,8 +287,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RAI-JG-uEa">
+                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="24" minValue="1" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="RAI-JG-uEa">
                                 <rect key="frame" x="70" y="271" width="459" height="31"/>
+                                <color key="minimumTrackTintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="maximumTrackTintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" red="1" green="0.50196078430000002" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="onSlide:" destination="vcp-oU-mmi" eventType="valueChanged" id="JTa-BJ-j0Z"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="24 hrs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zi-Yn-sR5">
                                 <rect key="frame" x="531" y="275" width="49" height="21"/>
@@ -304,7 +302,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0 hrs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nyi-FQ-uoa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 hr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nyi-FQ-uoa">
                                 <rect key="frame" x="23" y="275" width="39" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -539,6 +537,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3Dj-SU-Voo"/>
+        <segue reference="mFO-yI-yUS"/>
+        <segue reference="Z05-PE-Ip4"/>
     </inferredMetricsTieBreakers>
 </document>

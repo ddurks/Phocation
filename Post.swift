@@ -21,6 +21,7 @@ class Post : PFObject, PFSubclassing {
     @NSManaged var userLocation: PFGeoPoint?
     @NSManaged var likes: NSNumber?
     @NSManaged var lifespan: NSNumber?
+    @NSManaged var alive: NSNumber?
     
     var image: UIImage?
     var latitude: String?
@@ -29,6 +30,7 @@ class Post : PFObject, PFSubclassing {
     var username: String?
     var likenum: Int?
     var life: Int?
+    var live: Int?
     
     func upload(){
         if self.image != nil  {
@@ -45,15 +47,7 @@ class Post : PFObject, PFSubclassing {
             self.userName = self.username
             self.likes = self.likenum as NSNumber?
             self.lifespan = self.life as NSNumber?
-            self.saveInBackground {
-                (success: Bool, error: Error?) -> Void in
-                if (success) {
-                    // The object has been saved.
-                } else {
-                    print("error")
-                    // There was a problem, check error.description
-                }
-            }
+            self.alive = self.live as NSNumber?
         }
     }
     //MARK: PFSubclassing Protocol

@@ -68,7 +68,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
         
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         let phocations = PFQuery(className: "Post")
         phocations.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
@@ -85,17 +87,24 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
                         let id = object.objectId as String!
                         let user = object["userName"] as! String
                         let longD = Double(long), latD = Double(lat)
-                        print("\(lat) \(long) \(id)")
+                        let alive = object["alive"] as! Int
+                        print("\(lat) \(long) \(id) \(object.createdAt) \(alive)")
                         let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latD!, longD!)
                         let thumbnail = object["imageFile"] as! PFFile
                         thumbnail.getDataInBackground{(imageData: Data?, error: Error?) -> Void in
                             if error == nil {
                                 if let image = UIImage(data: imageData!) {
                                     let objectAnnotation = Phocation(id: id!, user: user, coordinate: pinLocation, image: image)
-                                    self.mapView.addAnnotation(objectAnnotation)                               }
+                                    if (alive == 1) {
+                                        self.mapView.addAnnotation(objectAnnotation)
+                                    }
+                                    else {
+                                        self.mapView.removeAnnotation(objectAnnotation)
+                                    }
+                                }
                             }
                         }
-
+                        
                     }
                 }
             } else {

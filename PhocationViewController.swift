@@ -15,15 +15,9 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     
     @IBOutlet weak var imageViewer: UIImageView!
     
-    @IBOutlet weak var likeButton: UIButton!
-    
-    @IBOutlet weak var unlikeButton: UIButton!
-    
     @IBOutlet weak var numLikes: UILabel!
     
-    var likeImage = UIImage(named: "phocationHeart.png")
-    
-    var unlikeImage = UIImage(named: "phocationBrokenHeart.png")
+    @IBOutlet weak var deleteButton: UIButton!
     
     var id:String?
     
@@ -31,27 +25,25 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     
     var liked:Bool? {
         didSet {
-            self.likeButton.isEnabled = !self.liked!
-            self.unlikeButton.isEnabled = self.liked!
             getLikes(change: 0)
         }
     }
     
-    var likes: Int! {
+    var likenum: Int! {
         didSet {
-            self.numLikes.text = String(self.likes)
+            self.numLikes.text = String(self.likenum)
         }
     }
     
     override func viewDidLoad() {
-        //self.likeButton.setImage(likeImage, for: UIControlState.normal )
-        //self.unlikeButton.setImage(unlikeImage, for: UIControlState.normal)
-        self.numLikes.backgroundColor = UIColor(patternImage: UIImage(named: "phocationHeart.png")!)
+        
+        self.deleteButton.isHidden = true
+
         let barLikes = UIBarButtonItem(customView: self.numLikes)
         self.navigationItem.rightBarButtonItem = barLikes
-        self.likeButton.isEnabled = false
-        self.unlikeButton.isEnabled = false
+        
         self.isLiked()
+        
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeUp.direction = UISwipeGestureRecognizerDirection.up
         self.view.addGestureRecognizer(swipeUp)
@@ -64,7 +56,11 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
         query.getObjectInBackground(withId: self.id!) {
             (object: PFObject?, error: Error?) -> Void in
             if error == nil && object != nil {
-                self.navigationItem.title = object?["userName"] as? String
+                let user = object?["userName"] as? String
+                self.navigationItem.title = user
+                if(user == currentUser.userName){
+                    self.deleteButton.isHidden = false
+                }
                 let thumbnail = object?["imageFile"] as! PFFile
                 thumbnail.getDataInBackground{(imageData: Data?, error: Error?) -> Void in
                     if error == nil {
@@ -88,16 +84,22 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.down:
-                if self.liked == false {
-                    self.getLikes(change: -1)
+                if self.liked == true {
+                    print("Unlike")
                     self.removeLike()
-                    self.liked = true
+                    self.liked = false
+                }
+                else {
+                    print("Can't unlike")
                 }
             case UISwipeGestureRecognizerDirection.up:
-                if self.liked == true {
-                    self.getLikes(change: 1)
+                if self.liked == false {
+                    print("Like")
                     self.addLike()
-                    self.liked = false
+                    self.liked = true
+                }
+                else {
+                    print("Can't Like")
                 }
             default:
                 break
@@ -115,7 +117,7 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
                 object?["likes"] = likes
                 object?.saveInBackground()
                 
-                self.likes = likes
+                self.likenum = likes
             } else {
                 print("\(error)")
                 return
@@ -125,9 +127,17 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     
     func addLike() {
         let like = Like()
-        like.fromuser = currentUser.userName
-        like.topost = self.id
-        like.upload()
+        like.fromUser = currentUser.userName
+        like.toPost = self.id
+        like.saveInBackground {
+            (success: Bool, error: Error?) -> Void in
+            if (success) {
+                self.getLikes(change: 1)
+            } else {
+                print("\(error)")
+                // There was a problem, check error.description
+            }
+        }
     }
     
     func removeLike() {
@@ -140,6 +150,7 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
                 for object in objects!{
                     object.deleteEventually()
                 }
+                self.getLikes(change: -1)
             } else{
                 print("\(error)")
             }
@@ -155,11 +166,11 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
             if error == nil {
                     if (objects?.isEmpty)! {
                         self.liked = false
-                        print("empty")
+                        print("haven't liked yet")
                     }
                     else{
                         self.liked = true
-                        print("found")
+                        print("have liked it")
                     }
             } else{
                 print("\(error)")
@@ -167,18 +178,20 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
         }
     }
     
-    @IBAction func likeTapped(_ sender: Any) {
-        self.unlikeButton.isEnabled = true
-        self.getLikes(change: 1)
-        self.addLike()
-        self.likeButton.isEnabled = false
-    }
-    
-    @IBAction func unlikeTapped(_ sender: Any) {
-        self.likeButton.isEnabled = true
-        self.getLikes(change: -1)
-        self.removeLike()
-        self.unlikeButton.isEnabled = false
+    @IBAction func deletePost(_ sender: Any) {
+        self.deleteButton.isEnabled = false
+        let query = PFQuery(className: "Post")
+        query.getObjectInBackground(withId: self.id!) {
+            (object: PFObject?, error: Error?) -> Void in
+            if error == nil && object != nil {
+                print("deleting")
+                object?["alive"] = 0
+                object?.saveInBackground()
+                super.performSegue(withIdentifier: "deleteSegue", sender: self.deleteButton)
+            } else {
+                print("\(error)")
+            }
+        }
     }
     
 }

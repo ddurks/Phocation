@@ -28,9 +28,6 @@ extension MainViewController: MKMapViewDelegate {
             } else {
                 // 3
                 view = PhocationAnnotationView(annotation: annotation,reuseIdentifier: annotation.title)
-                view.canShowCallout = false
-                view.calloutOffset = CGPoint(x: -5, y: 5)
-                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
             }
             view.isEnabled = true
             

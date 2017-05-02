@@ -11,10 +11,6 @@ import Parse
 import Bolts
 
 class SettingsViewController: UIViewController, UITextFieldDelegate {
-    
-    @IBOutlet weak var settingsBackButton: UIButton!
-    
-    @IBOutlet weak var userNameLabel: UILabel!
 
     @IBOutlet weak var currUser: UILabel!
     
@@ -34,6 +30,11 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.navigationItem.title = "SETTINGS"
         // Do any additional setup after loading the view.
+        let currentValue = Int(lifeSpanSlider.value)
+        lifeSpan.text = "Posted Photo Lifespan: \(currentValue) hours"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         currUser.text = "Username: " + currentUser.userName!
     }
 
@@ -42,6 +43,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @IBAction func onSlide(_ sender: Any) {
+        let currentValue = Int(lifeSpanSlider.value)
+        lifeSpan.text = "Posted Photo Lifespan: \(currentValue) hours"
+    }
     @IBAction func onUserNameUpdate(_ sender: Any) {
         /*let defaults = UserDefaults.standard
         defaults.set(userName.text, forKey: "User")
