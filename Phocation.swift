@@ -9,6 +9,7 @@
 import Foundation
 import MapKit
 
+// class to denote phocation annotations on the map
 class Phocation: MKPointAnnotation {
     var id: String?
     var user: String?

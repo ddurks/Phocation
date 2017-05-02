@@ -36,12 +36,14 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     }
     
+    // post a photo to server
     @IBAction func postPhoto(_ sender: Any) {
         postButton.isEnabled = false
         PhotoTakingHelper(image: self.image)
         postButton.isEnabled = true
     }
     
+    //take a new photo from camera
     @IBAction func takePhoto(_ sender: Any) {
         imagePicker.sourceType = UIImagePickerControllerSourceType.camera
         imagePicker.mediaTypes = [kUTTypeImage as String]
@@ -50,6 +52,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.present(imagePicker, animated: true, completion: nil)
     }
     
+    //choose a new photo from camera roll
     @IBAction func choosePhoto(_ sender: Any) {
         imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         imagePicker.mediaTypes = [kUTTypeImage as String]
@@ -58,6 +61,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.present(imagePicker, animated: true, completion: nil)
     }
     
+    // controller for camera access
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         postButton.isEnabled = true
@@ -80,6 +84,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.dismiss(animated: true, completion: nil)
     }
 
+    // helper function for posting photos with all info to server
     func PhotoTakingHelper(image: UIImage?) {
         if let image = image {
             let post = Post()
@@ -89,7 +94,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             post.location = PFGeoPoint(latitude: Double(currentUser.latitude!)!, longitude: Double(currentUser.longitude!)!)
             post.username = PFUser.current()?.username
             post.likenum = 0
-            post.life = 24
+            post.life = currentUser.lifespan
             post.live = 1
             post.upload()
             post.saveInBackground {
@@ -112,16 +117,5 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

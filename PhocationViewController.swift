@@ -23,12 +23,14 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     
     var image: UIImage?
     
+    // pull new like value server when liked
     var liked:Bool? {
         didSet {
             getLikes(change: 0)
         }
     }
     
+    // set like text when updated
     var likenum: Int! {
         didSet {
             self.numLikes.text = String(self.likenum)
@@ -36,7 +38,7 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
     }
     
     override func viewDidLoad() {
-        
+        // set up nav bar and swipe handlers
         self.deleteButton.isHidden = true
 
         let barLikes = UIBarButtonItem(customView: self.numLikes)
@@ -52,6 +54,7 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
         self.view.addGestureRecognizer(swipeDown)
         
+        // retrieve post image and display in imageView
         let query = PFQuery(className: "Post")
         query.getObjectInBackground(withId: self.id!) {
             (object: PFObject?, error: Error?) -> Void in
@@ -75,11 +78,10 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
                 print("error")
             }
         }
-        //imageViewer.contentMode = .scaleAspectFit
-        //imageViewer.image = currentUser.currImage
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    // handle swipes for likes and unlikes
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -90,7 +92,7 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
                     self.liked = false
                 }
                 else {
-                    print("Can't unlike")
+                    //print("Can't unlike")
                 }
             case UISwipeGestureRecognizerDirection.up:
                 if self.liked == false {
@@ -99,7 +101,7 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
                     self.liked = true
                 }
                 else {
-                    print("Can't Like")
+                    //print("Can't Like")
                 }
             default:
                 break
@@ -107,6 +109,7 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
         }
     }
     
+    // retrieve likes from post
     func getLikes(change: Int) {
         let query = PFQuery(className: "Post")
         query.getObjectInBackground(withId: self.id!) {
@@ -125,6 +128,7 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
         }
     }
     
+    // add a like to a post from a certain user
     func addLike() {
         let like = Like()
         like.fromUser = currentUser.userName
@@ -140,6 +144,7 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
         }
     }
     
+    // remove a like from a post from a certain user
     func removeLike() {
         let query = PFQuery(className: "Like")
         query.whereKey("fromUser", equalTo: currentUser.userName! as String)
@@ -157,6 +162,7 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
         }
     }
     
+    // check if phocation has already been liked by a user, disable liking if so
     func isLiked() {
         let query = PFQuery(className: "Like")
         query.whereKey("fromUser", equalTo: currentUser.userName! as String)
@@ -166,11 +172,11 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
             if error == nil {
                     if (objects?.isEmpty)! {
                         self.liked = false
-                        print("haven't liked yet")
+                        //print("haven't liked yet")
                     }
                     else{
                         self.liked = true
-                        print("have liked it")
+                        //print("have liked it")
                     }
             } else{
                 print("\(error)")
@@ -178,13 +184,25 @@ class PhocationViewController: UIViewController, UINavigationControllerDelegate 
         }
     }
     
+    // Function for deleting post should owner so choose
     @IBAction func deletePost(_ sender: Any) {
+        let alert = UIAlertController(title: "Delete?", message: "Are You Sure You Want to Delete This Post?", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            self.delete()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // function that actually deletes post if user opts to
+    func delete(){
         self.deleteButton.isEnabled = false
         let query = PFQuery(className: "Post")
         query.getObjectInBackground(withId: self.id!) {
             (object: PFObject?, error: Error?) -> Void in
             if error == nil && object != nil {
-                print("deleting")
+                //print("deleting")
                 object?["alive"] = 0
                 object?.saveInBackground()
                 super.performSegue(withIdentifier: "deleteSegue", sender: self.deleteButton)

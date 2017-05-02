@@ -30,6 +30,7 @@ class MyPhocationsViewController: UIViewController, CLLocationManagerDelegate, U
         // Do any additional setup after loading the view, typically from a nib.
         mapView.delegate = self
         
+        // location manager set up
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -37,6 +38,28 @@ class MyPhocationsViewController: UIViewController, CLLocationManagerDelegate, U
         //mapView.showsUserLocation = true
         
         print("\(currentUser.userName)")
+        
+    }
+    
+    // function for computing date interval in hours
+    func interval(date1: Date, date2: Date) -> Int {
+        let date1str = String(describing: date1)
+        let date2str = String(describing: date2)
+        let date1A = date1str.components(separatedBy: " ")
+        let date2A = date2str.components(separatedBy: " ")
+        if(date1A[0] == date2A[0]){
+            let time1 = date1A[1].components(separatedBy: ":")
+            let time2 = date2A[1].components(separatedBy: ":")
+            let diff = Int(time2[0])! - Int(time1[0])!
+            return diff
+        }
+        else {
+            return 24
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // load posts only if they belong to logged in user and are alive
         let phocations = PFQuery(className: "Post")
         phocations.whereKey("userName", equalTo: currentUser.userName! as String)
         phocations.findObjectsInBackground {
@@ -53,18 +76,34 @@ class MyPhocationsViewController: UIViewController, CLLocationManagerDelegate, U
                         let long = object["userLong"] as! String
                         let id = object.objectId as String!
                         let user = object["userName"] as! String
-                        let user_id = user + ":" + id!
-                        print("\(user_id)")
+                        //let user_id = user + ":" + id!
+                        //print("\(user_id)")
                         let longD = Double(long), latD = Double(lat)
-                        print("\(lat) \(long) \(id)")
+                        //print("\(lat) \(long) \(id)")
                         let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latD!, longD!)
+                        var alive = object["alive"] as! Int
+                        let lifespan = object["lifespan"] as! Int
+                        let postDate = object.createdAt! as Date
+                        let currDate = Date()
+                        let diff = self.interval(date1: postDate, date2: currDate)
+                        if (diff >= lifespan) {
+                            alive = 0
+                            object["alive"] = 0
+                            object.saveInBackground()
+                        }
                         let thumbnail = object["imageFile"] as! PFFile
                         thumbnail.getDataInBackground{(imageData: Data?, error: Error?) -> Void in
                             if error == nil {
                                 if let image = UIImage(data: imageData!) {
                                     let phImage = image
                                     let objectAnnotation = Phocation(id: id!, user: user, coordinate: pinLocation, image: phImage)
-                                    self.mapView.addAnnotation(objectAnnotation)                                }
+                                    if(alive == 1) {
+                                        self.mapView.addAnnotation(objectAnnotation)
+                                    }
+                                    else {
+                                        self.mapView.removeAnnotation(objectAnnotation)
+                                    }
+                                }
                             }
                         }
                     }
@@ -74,9 +113,9 @@ class MyPhocationsViewController: UIViewController, CLLocationManagerDelegate, U
                 print("Error: \(error!) ")
             }
         }
-        
     }
     
+    // location manager helper for user location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
         let location = locations.last

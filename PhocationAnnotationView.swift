@@ -9,6 +9,7 @@
 import Foundation
 import MapKit
 
+// class to assist in viewing custom phocation annotations
 class PhocationAnnotationView: MKAnnotationView {
 
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {

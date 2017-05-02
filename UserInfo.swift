@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// class to globally track user info and settings
 class UserInfo {
     
     static let sharedUserInfo = UserInfo()

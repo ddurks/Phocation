@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 
+// class to hold information for likes to be posted to the server
 class Like: PFObject, PFSubclassing {
     
     @NSManaged var toPost: String?

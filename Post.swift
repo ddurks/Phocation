@@ -9,10 +9,9 @@
 import Foundation
 import Parse
 
-// 1
+// custom class to define posts created by users to be uploaded to the server
 class Post : PFObject, PFSubclassing {
     
-    // 2
     @NSManaged var imageFile: PFFile?
     @NSManaged var user: PFUser?
     @NSManaged var userName: String?
@@ -34,11 +33,10 @@ class Post : PFObject, PFSubclassing {
     
     func upload(){
         if self.image != nil  {
-            // 1
             let imageData = UIImageJPEGRepresentation(self.image!, 0.8)!
             let imageFile = PFFile(data: imageData)
             imageFile?.saveInBackground()
-            // 2
+
             self.imageFile = imageFile
             self.user = PFUser.current()
             self.userLat = self.latitude
@@ -52,12 +50,10 @@ class Post : PFObject, PFSubclassing {
     }
     //MARK: PFSubclassing Protocol
     
-    // 3
     static func parseClassName() -> String {
         return "Post"
     }
     
-    // 4
     override init () {
         super.init()
     }

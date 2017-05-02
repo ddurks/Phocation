@@ -29,37 +29,40 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // set variables based on user entry
     @IBAction func onUsernameEdit(_ sender: Any) {
         self.signInButton.isEnabled = false
     }
+    
     @IBAction func onUsernameUpdate(_ sender: Any) {
         self.username = usernameField.text!
         self.uSet = true
         self.signInButton.isEnabled = true
     }
     
-    
     @IBAction func onPasswordEdit(_ sender: Any) {
         self.signInButton.isEnabled = false
     }
+    
     @IBAction func onPasswordUpdate(_ sender: Any) {
         self.password = passwordField.text!
         self.pSet = true
         self.signInButton.isEnabled = true
     }
     
+    // log in user based on text box, only enabled when both fields have been altered
     @IBAction func logInPressed(_ sender: Any) {
-        print("Loggin in")
+        //print("Loggin in")
 
         if uSet == true && pSet == true {
             signInButton.isEnabled = false
             PFUser.logInWithUsername(inBackground: self.username!,password: self.password!) {
                 (objects, error) -> Void in
                 if error == nil {
-                    let currUser = PFUser.current()
+                    //let currUser = PFUser.current()
                     currentUser.userName = self.username
                     currentUser.password = self.password
-                    print("\(currUser?.username!) logged in successfully")
+                    //print("\(currUser?.username!) logged in successfully")
                     let defaults = UserDefaults.standard
                     defaults.set(currentUser.userName, forKey: "User")
                     defaults.set(currentUser.password, forKey: "Pass")

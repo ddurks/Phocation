@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
+// class to control location search bar results
 class LocationSearchTable : UITableViewController, UISearchResultsUpdating {
     
     var matchingItems:[MKMapItem] = []
@@ -18,6 +19,7 @@ class LocationSearchTable : UITableViewController, UISearchResultsUpdating {
     
     var handleMapSearchDelegate:HandleMapSearch? = nil
     
+    // parse address for display in table
     func parseAddress(selectedItem:MKPlacemark) -> String {
         // put a space between "4" and "Melrose Place"
         let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""
@@ -44,6 +46,7 @@ class LocationSearchTable : UITableViewController, UISearchResultsUpdating {
 }
 
 extension LocationSearchTable {
+    // update search results using MKLocalSearchRequest
     func updateSearchResults(for searchController: UISearchController) {
         guard let mapView = mapView,
             let searchBarText = searchController.searchBar.text else { return }
@@ -61,6 +64,7 @@ extension LocationSearchTable {
     }
 }
 
+// govern table view cells
 extension LocationSearchTable {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matchingItems.count
@@ -75,6 +79,7 @@ extension LocationSearchTable {
     }
 }
 
+// perform zoom to location if one is selected
 extension LocationSearchTable {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedItem = matchingItems[indexPath.row].placemark

@@ -41,18 +41,21 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Set up nav controller values
         navigationController?.navigationBar.barTintColor = UIColor.orange
         navigationController?.navigationBar.tintColor = UIColor.magenta
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.cyan]
         
         mapView.delegate = self
         
+        // set up location manager for user location
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
         
+        // set location search bar
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
         self.resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         self.resultSearchController?.searchResultsUpdater = locationSearchTable
@@ -70,7 +73,25 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
         locationSearchTable.handleMapSearchDelegate = self
     }
     
+    // function to compute the hour interval between two dates for lifespan purposes
+    func interval(date1: Date, date2: Date) -> Int {
+        let date1str = String(describing: date1)
+        let date2str = String(describing: date2)
+        let date1A = date1str.components(separatedBy: " ")
+        let date2A = date2str.components(separatedBy: " ")
+        if(date1A[0] == date2A[0]){
+            let time1 = date1A[1].components(separatedBy: ":")
+            let time2 = date2A[1].components(separatedBy: ":")
+            let diff = Int(time2[0])! - Int(time1[0])!
+            return diff
+        }
+        else {
+            return 24
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
+        // fetch posts, only if alive, remove if no longer alive or past lifespan
         let phocations = PFQuery(className: "Post")
         phocations.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
@@ -87,8 +108,17 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
                         let id = object.objectId as String!
                         let user = object["userName"] as! String
                         let longD = Double(long), latD = Double(lat)
-                        let alive = object["alive"] as! Int
-                        print("\(lat) \(long) \(id) \(object.createdAt) \(alive)")
+                        var alive = object["alive"] as! Int
+                        let lifespan = object["lifespan"] as! Int
+                        let postDate = object.createdAt! as Date
+                        let currDate = Date()
+                        let diff = self.interval(date1: postDate, date2: currDate)
+                        if (diff >= lifespan) {
+                            alive = 0
+                            object["alive"] = 0
+                            object.saveInBackground()
+                        }
+                        //print("\(lat) \(long) \(id) \(diff) \(alive)")
                         let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latD!, longD!)
                         let thumbnail = object["imageFile"] as! PFFile
                         thumbnail.getDataInBackground{(imageData: Data?, error: Error?) -> Void in
@@ -114,6 +144,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
         }
     }
 
+    // user location function
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last
@@ -136,6 +167,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
 
 }
 
+// extension to handle search bar entries
 extension MainViewController: HandleMapSearch {
 
     func zoomTo(placemark:MKPlacemark){

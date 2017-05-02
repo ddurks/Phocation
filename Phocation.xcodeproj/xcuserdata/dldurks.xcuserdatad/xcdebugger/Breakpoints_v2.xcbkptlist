@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Post.swift"
-            timestampString = "515444226.905277"
+            timestampString = "515457713.780022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "Post"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Post.swift"
-            timestampString = "515444226.905277"
+            timestampString = "515457713.780022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "Post"
             landmarkType = "3">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Post.swift"
-            timestampString = "515444226.905277"
+            timestampString = "515457713.780022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "Post"
             landmarkType = "3">
          </BreakpointContent>
@@ -58,29 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Post.swift"
-            timestampString = "515444226.905277"
+            timestampString = "515457713.780022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "Post"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Phocation/SettingsViewController.swift"
-            timestampString = "515294377.738966"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "onUserNameUpdate(_:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -122,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Phocation.swift"
-            timestampString = "514832927.944733"
+            timestampString = "515457713.780022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
             landmarkName = "init(id:user:coordinate:image:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PhocationViewer.swift"
-            timestampString = "513999484.079157"
+            timestampString = "515457713.780022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "MainViewController"
             landmarkType = "4">
          </BreakpointContent>
@@ -154,12 +138,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocationSearchTable.swift"
-            timestampString = "514779380.622803"
+            timestampString = "515457713.780022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Phocation/MainViewController.swift"
+            timestampString = "515457713.780022"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "interval(date1:date2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

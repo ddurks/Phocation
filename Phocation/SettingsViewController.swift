@@ -30,13 +30,14 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.navigationItem.title = "SETTINGS"
         // Do any additional setup after loading the view.
-        let currentValue = Int(lifeSpanSlider.value)
-        lifeSpan.text = "Posted Photo Lifespan: \(currentValue) hours"
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        // set up values based on current user's settings
         currUser.text = "Username: " + currentUser.userName!
-    }
+        self.lifeSpanSlider.value = Float(currentUser.lifespan!)
+        let currentValue = Int(lifeSpanSlider.value)
+        lifeSpan.text = "Posted Photo Lifespan: \(currentValue) hours"    }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -44,47 +45,18 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onSlide(_ sender: Any) {
+        // update lifespan values based on slide and save to defaults for persistence
         let currentValue = Int(lifeSpanSlider.value)
         lifeSpan.text = "Posted Photo Lifespan: \(currentValue) hours"
-    }
-    @IBAction func onUserNameUpdate(_ sender: Any) {
-        /*let defaults = UserDefaults.standard
-        defaults.set(userName.text, forKey: "User")
+        currentUser.lifespan = currentValue
+        let defaults = UserDefaults.standard
+        defaults.set(currentValue, forKey: "Lifespan")
         defaults.synchronize()
-        
-        // Defining the user object
-        let user = PFUser()
-        user.username = userName.text
-        user.password = "Test"
-        
-        // Signing up using the Parse API
-        user.signUpInBackground {
-            (success, error) -> Void in
-            if let error = error as NSError? {
-                _ = error.userInfo["error"] as? NSString
-                // In case something went wrong, use errorString to get the error
-                _ = UIAlertController(title: "Invalid Username", message: "Please Enter a Different One", preferredStyle: UIAlertControllerStyle.alert)
-            } else {
-                // Everything went okay
-            }
-        }*/
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

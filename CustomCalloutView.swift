@@ -8,6 +8,7 @@
 
 import UIKit
 
+// class to support data associated with custom annotation callouts
 class CustomCalloutView: UIView {
 
     @IBOutlet weak var phocationImage: UIImageView!

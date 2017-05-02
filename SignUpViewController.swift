@@ -27,6 +27,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // update variables based on user entry
     @IBAction func onUsernameEdit(_ sender: Any) {
         self.signUpButton.isEnabled = false
     }
@@ -43,6 +44,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.signUpButton.isEnabled = true
     }
     
+    // actually sign user up if both fields have been filled
     @IBAction func signUpPressed(_ sender: Any) {
             let user = PFUser()
             user.username = self.username

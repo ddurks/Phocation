@@ -12,8 +12,10 @@ import UIKit
 import Parse
 import Bolts
 
+// extension class to assist with my phocations view controller
 extension MyPhocationsViewController: MKMapViewDelegate {
     
+    // set up custom phocation annotation views
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation is Phocation {
@@ -23,7 +25,6 @@ extension MyPhocationsViewController: MKMapViewDelegate {
                 dequeuedView.annotation = annotation
                 view = dequeuedView as! PhocationAnnotationView
             } else {
-                // 3
                 view = PhocationAnnotationView(annotation: annotation,reuseIdentifier: annotation.title)
             }
             view.isEnabled = true
@@ -42,6 +43,7 @@ extension MyPhocationsViewController: MKMapViewDelegate {
         return nil
     }
     
+    // prepare for segue if phocation callout tapped
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "phocationSegue1"){
             let phocationViewController = (segue.destination as! PhocationViewController)
@@ -53,16 +55,15 @@ extension MyPhocationsViewController: MKMapViewDelegate {
         super.performSegue(withIdentifier: "phocationSegue1", sender: view)
     }
     
+    // perform custom callout view for phocations
     func mapView(_ mapView: MKMapView,
                  didSelect view: MKAnnotationView)
     {
-        // 1
         if view.annotation is MKUserLocation
         {
-            // Don't proceed with custom callout
             return
         }
-        // 2
+
         let phAnnotation = view.annotation as! Phocation
         let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
         let calloutView = views?[0] as! CustomCalloutView
@@ -72,9 +73,19 @@ extension MyPhocationsViewController: MKMapViewDelegate {
         let button = UIButton(frame: calloutView.phocationImage.frame)
         button.addTarget(self, action: #selector(MyPhocationsViewController.showPhocation(sender:)), for: .touchUpInside)
         calloutView.addSubview(button)
-        // 3
+
         calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
         view.addSubview(calloutView)
         mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if view.isKind(of: PhocationAnnotationView.self)
+        {
+            for subview in view.subviews
+            {
+                subview.removeFromSuperview()
+            }
+        }
     }
 }
